@@ -11,20 +11,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
   <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content h4{font-weight:700;margin:1em 0 .5em}.post-content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content pre code{background:0;padding:0}.post-content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}.post-content ul,.post-content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
-</head>
-<body class="min-h-screen bg-base-100">
-<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
-<main class="max-w-3xl mx-auto px-4 py-12">
-  <article>
-    <h1 class="text-3xl font-bold mb-2">MVC、MVVM体系结构——解析常见的前端开发框架</h1>
-    <div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
-      <span>2023-03-09</span>
-      <span class="badge badge-sm badge-outline">前端开发</span>
-    </div>
-    <div class="post-content"><p>随着互联网技术的飞速发展，前端开发框架层出不穷，其中最常见的MVC和MVVM体系结构是广大开发者熟知的，这两种体系结构都可以帮助开发者提高项目的可维护性。本文将向大家解释这两种体系结构的详细内容。<br><br>##### MVC体系结构<br>MVC体系结构指的是模型（Model）、视图（View）和控制器（Controller）之间关系的一种模式。模型表示数据源，视图负责渲染数据并显示给用户观看，控制器则处理外部请求并更新模型和视图。<br>![MVC.png][1]<br>具体来说，MVC架构包含以下三个部分：<br><br>Model（模型）：包含业务逻辑和操作数据的方法或接口，负责与数据库进行交互，以及对应用程序中的各种数据进行操作；<br>View（视图）：负责数据的展示和用户交互的界面设计，通常由HTML和CSS构成；<br>Controller（控制器）：负责协调Model和View之间的关系，控制数据的流向，实现业务逻辑、处理用户的请求和响应等。<br>在MVC框架中，这三部分相互独立，彼此之间耦合度低。因此，开发人员可以通过MVC体系结构更加高效地开发复杂的应用程序，同时也可以方便地对代码进行维护和修改。<br><br>##### MVVM体系结构<br>在MVC体系结构的基础上又演化出了MVVM体系结构。MVVM体系结构主要包含模型（Model）、视图模型（View-Model）和视图（View）三个部分。<br>![MVVM.png][2]<br>Model（模型）：同MVC体系结构一样，负责操作数据。<br>View（视图）：也同MVC体系结构类似，负责显示数据。<br>View-Model（视图模型）：是连接View和Model的桥梁。视图模型定义了View中需要被绑定的属性和命令，并暴露出事件让View进行绑定。<br>MVVM框架的核心是数据绑定，即将数据模型的数据和UI控件的状态自动同步起来，当数据源改变时，不需要手动去找到对应的UI元素，而是由数据绑定机制自动完成。这使得前端开发变得简单，并且减少了编写大量冗余代码的工作量。<br><br>##### 总结<br>MVC和MVVM体系结构都是目前前端开发框架中常见的设计模式，尽管它们在设计思路上存在差异，但都可以帮助开发者提高项目的可维护性、可扩展性。建议开发者根据自己的需求和特点选择合适的框架，在提升工作效率的同时，加深对前端开发的理解。<br><br><br>  [1]: http://www.gonwe.cn/usr/uploads/2023/03/529077281.png<br>  [2]: http://www.gonwe.cn/usr/uploads/2023/03/4214673674.png</p></div>
-  </article>
-</main>
-<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
-<script>hljs.highlightAll();</script>
-</body></html>
+</head><body class="min-h-screen bg-base-100"><div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12"><article>
+<h1 class="text-3xl font-bold mb-2">MVC、MVVM体系结构——解析常见的前端开发框架</h1>
+<div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
+<span>2023-03-09</span><span class="badge badge-sm badge-outline">前端开发</span></div>
+<div class="post-content"><p>随着互联网技术的飞速发展，前端开发框架层出不穷，其中最常见的MVC和MVVM体系结构是广大开发者熟知的，这两种体系结构都可以帮助开发者提高项目的可维护性。本文将向大家解释这两种体系结构的详细内容。</p><p>##### MVC体系结构<br>MVC体系结构指的是模型（Model）、视图（View）和控制器（Controller）之间关系的一种模式。模型表示数据源，视图负责渲染数据并显示给用户观看，控制器则处理外部请求并更新模型和视图。<br>![MVC.png][1]<br>具体来说，MVC架构包含以下三个部分：</p><p>Model（模型）：包含业务逻辑和操作数据的方法或接口，负责与数据库进行交互，以及对应用程序中的各种数据进行操作；<br>View（视图）：负责数据的展示和用户交互的界面设计，通常由HTML和CSS构成；<br>Controller（控制器）：负责协调Model和View之间的关系，控制数据的流向，实现业务逻辑、处理用户的请求和响应等。<br>在MVC框架中，这三部分相互独立，彼此之间耦合度低。因此，开发人员可以通过MVC体系结构更加高效地开发复杂的应用程序，同时也可以方便地对代码进行维护和修改。</p><p>##### MVVM体系结构<br>在MVC体系结构的基础上又演化出了MVVM体系结构。MVVM体系结构主要包含模型（Model）、视图模型（View-Model）和视图（View）三个部分。<br>![MVVM.png][2]<br>Model（模型）：同MVC体系结构一样，负责操作数据。<br>View（视图）：也同MVC体系结构类似，负责显示数据。<br>View-Model（视图模型）：是连接View和Model的桥梁。视图模型定义了View中需要被绑定的属性和命令，并暴露出事件让View进行绑定。<br>MVVM框架的核心是数据绑定，即将数据模型的数据和UI控件的状态自动同步起来，当数据源改变时，不需要手动去找到对应的UI元素，而是由数据绑定机制自动完成。这使得前端开发变得简单，并且减少了编写大量冗余代码的工作量。</p><p>##### 总结<br>MVC和MVVM体系结构都是目前前端开发框架中常见的设计模式，尽管它们在设计思路上存在差异，但都可以帮助开发者提高项目的可维护性、可扩展性。建议开发者根据自己的需求和特点选择合适的框架，在提升工作效率的同时，加深对前端开发的理解。</p><p>  [1]: http://www.gonwe.cn/usr/uploads/2023/03/529077281.png<br>  [2]: http://www.gonwe.cn/usr/uploads/2023/03/4214673674.png</p></div></article></main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer><script>hljs.highlightAll();</script></body></html>

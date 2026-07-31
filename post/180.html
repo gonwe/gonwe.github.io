@@ -11,20 +11,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
   <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content h4{font-weight:700;margin:1em 0 .5em}.post-content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content pre code{background:0;padding:0}.post-content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}.post-content ul,.post-content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
-</head>
-<body class="min-h-screen bg-base-100">
-<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
-<main class="max-w-3xl mx-auto px-4 py-12">
-  <article>
-    <h1 class="text-3xl font-bold mb-2">JavaScript包管理工具 PNPM和Yarn的比较</h1>
-    <div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
-      <span>2023-02-23</span>
-      <span class="badge badge-sm badge-outline">前端开发</span>
-    </div>
-    <div class="post-content"><p>##### pnpm 和 yarn 是两种常见的 JavaScript 包管理工具，它们通常与 npm 一起使用。下面是它们之间的一些主要区别：<br>![pnpm.png][1]<br><br>###### 安装依赖时的方式不同:<br>npm：在本地项目目录中创建 node_modules 文件夹，按顺序下载各个依赖项，并将它们存储在该文件夹中。<br>pnpm：在全局 .pnpm-store 文件夹中存储所有依赖项，同时在本地项目目录中安装链接。这意味着如果同一依赖项被多个项目使用，则只需要下载它一次即可。<br><br>###### 存储空间占用情况<br><br>npm：采用的本地文件存储方式导致每个项目都需要存储一份完整的依赖库，因此占用的磁盘空间较大。<br>pnpm：共享依赖库可以减少磁盘空间需求，因此所需的空间更少。<br><br>###### 性能<br>npm：相对于其他包管理器，npm 将脚本执行和安装任务考虑在内，可以很好地平衡用户体验和性能。<br>pnpm：通过 HardLink/Copy 策略来去重依赖以及 Support Hoisting 提高了性能，从而使依赖安装时间和速度得以大幅缩短。<br>yarn：Yarn 可以并行安装所有依赖项，从而提供更快的安装速度，但占用的磁盘空间明显较大。<br><br>###### 总之，虽然在很多方面 pnpm 较 npm 和 yarn 更加优秀，但实际应用中仍需根据具体情况进行取舍。<br><br><br>  [1]: http://www.gonwe.cn/usr/uploads/2023/03/2166293877.png</p></div>
-  </article>
-</main>
-<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
-<script>hljs.highlightAll();</script>
-</body></html>
+</head><body class="min-h-screen bg-base-100"><div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12"><article>
+<h1 class="text-3xl font-bold mb-2">JavaScript包管理工具 PNPM和Yarn的比较</h1>
+<div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
+<span>2023-02-23</span><span class="badge badge-sm badge-outline">前端开发</span></div>
+<div class="post-content"><p>##### pnpm 和 yarn 是两种常见的 JavaScript 包管理工具，它们通常与 npm 一起使用。下面是它们之间的一些主要区别：<br>![pnpm.png][1]</p><p>###### 安装依赖时的方式不同:<br>npm：在本地项目目录中创建 node_modules 文件夹，按顺序下载各个依赖项，并将它们存储在该文件夹中。<br>pnpm：在全局 .pnpm-store 文件夹中存储所有依赖项，同时在本地项目目录中安装链接。这意味着如果同一依赖项被多个项目使用，则只需要下载它一次即可。</p><p>###### 存储空间占用情况</p><p>npm：采用的本地文件存储方式导致每个项目都需要存储一份完整的依赖库，因此占用的磁盘空间较大。<br>pnpm：共享依赖库可以减少磁盘空间需求，因此所需的空间更少。</p><p>###### 性能<br>npm：相对于其他包管理器，npm 将脚本执行和安装任务考虑在内，可以很好地平衡用户体验和性能。<br>pnpm：通过 HardLink/Copy 策略来去重依赖以及 Support Hoisting 提高了性能，从而使依赖安装时间和速度得以大幅缩短。<br>yarn：Yarn 可以并行安装所有依赖项，从而提供更快的安装速度，但占用的磁盘空间明显较大。</p><p>###### 总之，虽然在很多方面 pnpm 较 npm 和 yarn 更加优秀，但实际应用中仍需根据具体情况进行取舍。</p><p>  [1]: http://www.gonwe.cn/usr/uploads/2023/03/2166293877.png</p></div></article></main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer><script>hljs.highlightAll();</script></body></html>

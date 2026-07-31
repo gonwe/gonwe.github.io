@@ -11,20 +11,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
   <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content h4{font-weight:700;margin:1em 0 .5em}.post-content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content pre code{background:0;padding:0}.post-content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}.post-content ul,.post-content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
-</head>
-<body class="min-h-screen bg-base-100">
-<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
-<main class="max-w-3xl mx-auto px-4 py-12">
-  <article>
-    <h1 class="text-3xl font-bold mb-2">JS里面function和Function的区别</h1>
-    <div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
-      <span>2022-05-09</span>
-      
-    </div>
-    <div class="post-content"><p>简单点说:大写的Function是一个类 ,而小写的function是一个对象。 Function是一个构造器,function是Function实例化的一个对象,包含[[call]][[code]]等等属性,可以被执行。<br><br>具体使用方法：<br>``<code>typescript<br>function callAnotherFunc(fnFunction, vArgument) {<br>   fnFunction(vArgument);<br>}<br>var doAdd = new Function("iNum", "alert(iNum + 10)");<br>callAnotherFunc(doAdd, 10); //输出 "20" <br></code>`<code><br><br>定义普通函数就用function：<br></code>`<code>typescript<br>var func = function(arg0, arg1, ... argN) { statements };//函数直接量<br></code>``</p></div>
-  </article>
-</main>
-<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
-<script>hljs.highlightAll();</script>
-</body></html>
+</head><body class="min-h-screen bg-base-100"><div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12"><article>
+<h1 class="text-3xl font-bold mb-2">JS里面function和Function的区别</h1>
+<div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
+<span>2022-05-09</span></div>
+<div class="post-content"><p>简单点说:大写的Function是一个类 ,而小写的function是一个对象。 Function是一个构造器,function是Function实例化的一个对象,包含[[call]][[code]]等等属性,可以被执行。</p><p>具体使用方法：<br><pre><code class="language-typescript">function callAnotherFunc(fnFunction, vArgument) {<br>   fnFunction(vArgument);<br>}<br>var doAdd = new Function(&quot;iNum&quot;, &quot;alert(iNum + 10)&quot;);<br>callAnotherFunc(doAdd, 10); //输出 &quot;20&quot;</code></pre><p>定义普通函数就用function：<br><pre><code class="language-typescript">var func = function(arg0, arg1, ... argN) { statements };//函数直接量</code></pre></div></article></main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer><script>hljs.highlightAll();</script></body></html>
