@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>修复TypeScript tsconfig 错误 Cannot find module 'xx.xx' or its corresponding type declarations. - Gonwe</title>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content h4{font-weight:700;margin:1em 0 .5em}.post-content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content pre code{background:0;padding:0}.post-content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}.post-content ul,.post-content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
 </head>
 <body class="min-h-screen bg-base-100">
-<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
 <main class="max-w-3xl mx-auto px-4 py-12">
   <article>
     <h1 class="text-3xl font-bold mb-2">修复TypeScript tsconfig 错误 Cannot find module 'xx.xx' or its corresponding type declarations.</h1>
-    <div class="text-sm text-base-content/50 mb-8">2023-02-21 · 前端开发</div>
+    <div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
+      <span>2023-02-21</span>
+      <span class="badge badge-sm badge-outline">前端开发</span>
+    </div>
     <div class="post-content"><p>##### 问题原因<br><br>``<code>json<br>使用了 Vite 添加了别名 ，但是TS没有对应的路径，tsconfig.json和vite.config.ts需要相互设置好<br></code>`<code><br><br>#####  解决方法<br><br><strong>vite.config.ts</strong><br><br></code>`<code>json<br>{<br>    resolve: {<br>      alias: { <br>        "@": path.join(__dirname, "./src"), // 这里定义了别名 @ 相当于 ./src<br>      },<br>    },<br>}<br></code>`<code><br><br><strong>tsconfig.json</strong><br><br></code>`<code>json<br>{<br>	"extends": "@tsconfig/svelte/tsconfig.json",<br>	"compilerOptions": {<br>		"target": "ESNext",<br>		"useDefineForClassFields": true,<br>		"module": "ESNext",<br>		"resolveJsonModule": true,<br>		/**<br>		 * Typecheck JS in </code>.svelte<code> and </code>.js<code> files by default.<br>		 * Disable checkJs if you'd like to use dynamic types in JS.<br>		 * Note that setting allowJs false does not prevent the use<br>		 * of JS in </code>.svelte<code> files.<br>		 */<br>		"allowJs": true,<br>		"checkJs": true,<br>		"isolatedModules": true,<br>		"outDir": "./dist",<br>		"ignoreDeprecations": "5.0",<br>		"paths": {<br>			"@/<em>": ["./src/</em>"] // 这里要和Vite的别名对应<br>		},<br>	},<br>	"include": ["src/<strong>/<em>.d.ts", "src/</strong>/</em>.ts", "src/<strong>/<em>.js", "src/</strong>/</em>.svelte"],<br>	"exclude": [<br>		"node_modules",<br>		"dist"<br>	],<br>	"references": [{<br>		"path": "./tsconfig.node.json"<br>	}]<br>}<br><br></code>``<br>![vite-ts.jpeg][1]<br><br><br>  [1]: http://www.gonwe.cn/usr/uploads/2023/02/3125944132.jpeg</p></div>
   </article>
 </main>
 <footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+<script>hljs.highlightAll();</script>
 </body></html>

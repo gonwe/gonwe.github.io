@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JS基础 - this 的应用场景和取值 - Gonwe</title>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content h4{font-weight:700;margin:1em 0 .5em}.post-content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content pre code{background:0;padding:0}.post-content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}.post-content ul,.post-content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
 </head>
 <body class="min-h-screen bg-base-100">
-<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
 <main class="max-w-3xl mx-auto px-4 py-12">
   <article>
     <h1 class="text-3xl font-bold mb-2">JS基础 - this 的应用场景和取值</h1>
-    <div class="text-sm text-base-content/50 mb-8">2022-06-12 · 前端开发</div>
+    <div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
+      <span>2022-06-12</span>
+      <span class="badge badge-sm badge-outline">前端开发</span>
+    </div>
     <div class="post-content"><p>1. 作为普通函数<br><br>   ``<code>javascript<br>   function fn1() {<br>       console.log(this);<br>   }<br>   fn1(); // window<br>   </code>`<code><br><br>2. 使用call、bind、apply 调用<br><br>   </code>`<code>javascript<br>   function fn1() {<br>       console.log(this);<br>   }<br>   fn1.call({ name: 'zhangsan' }); // {name: 'zhangsan'}<br>   const fn2 = fn1.bind({ name: 'lisi' });<br>   fn2(); // {name: 'lisi'<br>   </code>`<code><br><br>> 函数的bind是返回一个新的函数<br><br>3. 作为对象方法调用<br><br>   </code>`<code>javascript<br>   const fn1 = {<br>       name: 'gonwe',<br>       sayName() {<br>           console.log(this); // {name: 'gonwe'}<br>       },<br>       wait() {<br>           setTimeout(function () {<br>               console.log(this); // window<br>           });<br>       }<br>   }<br>   </code>`<code><br><br>4. 在箭头函数调用<br><br>   </code>`<code>javascript<br>   const fn2 = {<br>       name: 'gonwe',<br>       sayName() {<br>           console.log(this); // {name: 'gonwe'}<br>       },<br>       wait() {<br>           setTimeout(() => {<br>               console.log(this); //{name: 'gonwe'}<br>           });<br>       }<br>   }<br>   </code>`<code><br><br>   > 箭头函数的</code>this<code>永远是取它上一级作用域的</code>this<code><br><br>5. 在class方法中调用<br><br>   </code>`<code>javascript<br>   class Person {<br>    constructor(name) {<br>        this.name = name;<br>    }<br>    sayName() {<br>        console.log(this);<br>    }<br>   }<br>   const Person1 = new Person('gonwe');<br>   Person1.sayName(); // {name: 'gonwe'}<br>   </code>``<br><br>> <strong>this取值是在函数执行的时候，不是在函数定义的时候</strong><br>><br>> <strong>this取值是在函数执行的时候，不是在函数定义的时候</strong><br>><br>> <strong>this取值是在函数执行的时候，不是在函数定义的时候</strong></p></div>
   </article>
 </main>
 <footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+<script>hljs.highlightAll();</script>
 </body></html>

@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gonwe</title>
-  <meta name="description" content="温故而知新" />
-  <link rel="shortcut icon" href="/favicon.ico?v=1584539068136" />
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content h4{font-weight:700;margin:1em 0 .5em}.post-content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content pre code{background:0;padding:0}.post-content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}.post-content ul,.post-content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
+<meta name="description" content="温故而知新" />
+<link rel="shortcut icon" href="/favicon.ico?v=1584539068136" />
 </head>
 <body class="min-h-screen bg-base-100">
 <div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
-
 <section class="hero-gradient">
-  <div class="hero min-h-[40vh]">
+  <div class="hero min-h-[35vh]">
     <div class="hero-content text-center">
       <div class="max-w-md">
         <div class="avatar mb-6"><div class="w-24 rounded-full ring ring-base-300 ring-offset-base-100 ring-offset-4"><img src="/images/avatar.png?v=1584539068136" alt="avatar" /></div></div>
@@ -25,577 +28,679 @@
     </div>
   </div>
 </section>
-
 <main class="max-w-3xl mx-auto px-4 py-8">
-  <h2 class="text-xl font-bold mb-6">文章</h2>
-  <div class="space-y-2">
+  <div class="flex flex-wrap gap-2 mb-6">
+    <span class="badge badge-sm">TypeScript</span><span class="badge badge-sm">前端开发</span><span class="badge badge-sm">学习笔记</span><span class="badge badge-sm">教程·资源</span><span class="badge badge-sm">服务端开发</span>
+  </div>
+  <h2 class="text-xl font-bold mb-4">文章 <span class="text-base-content/40 text-base font-normal">(95)</span></h2>
+  <div class="space-y-1">
 
-    <a href="/post/240.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Winget 新手使用指南</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-12-25</span>
+    <a href="/post/240.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Winget 新手使用指南</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-12-25</span>
     </a>
-    <a href="/post/199.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Windows11 LTSC 无法访问 局域网服务器共享文件 解决方法</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-12-04</span>
+    <a href="/post/199.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Windows11 LTSC 无法访问 局域网服务器共享文件 解决方法</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-12-04</span>
     </a>
-    <a href="/post/237.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">WSL2 使用GUI软件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-11-27</span>
+    <a href="/post/237.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">WSL2 使用GUI软件</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-11-27</span>
     </a>
-    <a href="/post/227.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Thinkbook 14p Gen2 ACH 强刷BIOS文件救砖教程</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-06-14</span>
+    <a href="/post/227.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Thinkbook 14p Gen2 ACH 强刷BIOS文件救砖教程</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-06-14</span>
     </a>
-    <a href="/post/225.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Bun 简单上手教程</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-05-28</span>
+    <a href="/post/225.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Bun 简单上手教程</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-05-28</span>
     </a>
-    <a href="/post/224.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">让网站支持PWA（Progressive Web App）</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-05-27</span>
+    <a href="/post/224.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">让网站支持PWA（Progressive Web App）</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-05-27</span>
     </a>
-    <a href="/post/209.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">修复 Docker 启动失败和 WSL 提示系统找不到路径问题的教程</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-05-24</span>
+    <a href="/post/209.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">修复 Docker 启动失败和 WSL 提示系统找不到路径问题的教程</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-05-24</span>
     </a>
-    <a href="/post/226.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Docker常用命令</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-04-20</span>
+    <a href="/post/226.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Docker常用命令</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-04-20</span>
     </a>
-    <a href="/post/218.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Android 开发环境搭建</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2024-03-22</span>
+    <a href="/post/218.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Android 开发环境搭建</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">24-03-22</span>
     </a>
-    <a href="/post/204.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">使用Chrome浏览器进行H5页面调试</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-11-08</span>
+    <a href="/post/204.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">使用Chrome浏览器进行H5页面调试</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-11-08</span>
     </a>
-    <a href="/post/207.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">解决教程：在Windows rsync同步文件时connection unexpectedly</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-11-08</span>
+    <a href="/post/207.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">解决教程：在Windows rsync同步文件时connection unexpectedly</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-11-08</span>
     </a>
-    <a href="/post/198.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">export default function foo() 和 const foo =  () =&amp;gt; {} 的区别</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-05-10</span>
+    <a href="/post/198.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">export default function foo() 和 const foo =  () =&amp;gt; {} 的区别</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-05-10</span>
     </a>
-    <a href="/post/197.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">腾讯轻量级应用服务器 Typecho 配置 SSL 证书</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-05-05</span>
+    <a href="/post/197.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">腾讯轻量级应用服务器 Typecho 配置 SSL 证书</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-05-05</span>
     </a>
-    <a href="/post/192.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">在React中使用useEffect钩子来处理生命周期事件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-03-13</span>
+    <a href="/post/192.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">在React中使用useEffect钩子来处理生命周期事件</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-03-13</span>
     </a>
-    <a href="/post/189.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">在 Vue项目 中使用 TypeScript</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-03-10</span>
+    <a href="/post/189.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">在 Vue项目 中使用 TypeScript</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-03-10</span>
     </a>
-    <a href="/post/178.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">使用 Node.js 发送邮件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-03-09</span>
+    <a href="/post/183.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">MVC、MVVM体系结构——解析常见的前端开发框架</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-03-09</span>
     </a>
-    <a href="/post/183.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">MVC、MVVM体系结构——解析常见的前端开发框架</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-03-09</span>
+    <a href="/post/178.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">使用 Node.js 发送邮件</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-03-09</span>
     </a>
-    <a href="/post/186.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">了解 Bit：一个跨平台的组件管理工具</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-03-02</span>
+    <a href="/post/186.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">了解 Bit：一个跨平台的组件管理工具</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-03-02</span>
     </a>
-    <a href="/post/180.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JavaScript包管理工具 PNPM和Yarn的比较</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-02-23</span>
+    <a href="/post/180.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JavaScript包管理工具 PNPM和Yarn的比较</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-02-23</span>
     </a>
-    <a href="/post/170.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">修复TypeScript tsconfig 错误</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-02-21</span>
+    <a href="/post/170.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">修复TypeScript tsconfig 错误</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">TypeScript</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-02-21</span>
     </a>
-    <a href="/post/172.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">修复TypeScript tsconfig 错误 无法写入文件 'xxx.js&amp;quot; 因为它会覆盖输入文件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-02-21</span>
+    <a href="/post/172.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">修复TypeScript tsconfig 错误 无法写入文件 'xxx.js&amp;quot; 因为它会覆盖输入文件</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">TypeScript</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-02-21</span>
     </a>
-    <a href="/post/174.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">修复TypeScript tsconfig 错误 Cannot find module 'xx.xx' or its corresponding type declarations.</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-02-21</span>
+    <a href="/post/174.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">修复TypeScript tsconfig 错误 Cannot find module 'xx.xx' or its corresponding type declarations.</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-02-21</span>
     </a>
-    <a href="/post/168.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Docker错误：Error during connect 解决</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-02-17</span>
+    <a href="/post/168.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Docker错误：Error during connect 解决</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-02-17</span>
     </a>
-    <a href="/post/164.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Docker错误：Error saving credentials: error storing credentials - err: exec: “docker-credential-desk</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-02-09</span>
+    <a href="/post/164.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Docker错误：Error saving credentials: error storing credentials - err: exec: “docker-credential-desk</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-02-09</span>
     </a>
-    <a href="/post/160.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">原生Javascript 实现的document.ready()</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-01-12</span>
+    <a href="/post/160.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">原生Javascript 实现的document.ready()</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-01-12</span>
     </a>
-    <a href="/post/159.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Vue2下Element UI 实现文件上传功能</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2023-01-11</span>
+    <a href="/post/159.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Vue2下Element UI 实现文件上传功能</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">23-01-11</span>
     </a>
-    <a href="/post/158.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">安装wsl2 报错，WslRegisterDistribution failed with error: 0x80070002</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-10-20</span>
+    <a href="/post/158.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">安装wsl2 报错，WslRegisterDistribution failed with error: 0x80070002</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-10-20</span>
     </a>
-    <a href="/post/156.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS(.js )和MJS (.mjs )文件有什么区别？</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-09-21</span>
+    <a href="/post/156.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS(.js )和MJS (.mjs )文件有什么区别？</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-09-21</span>
     </a>
-    <a href="/post/153.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》10 - 系统总体设计</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-09-05</span>
+    <a href="/post/153.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》10 - 系统总体设计</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-09-05</span>
     </a>
-    <a href="/post/151.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》9 - 系统设计概述</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-09-04</span>
+    <a href="/post/151.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》9 - 系统设计概述</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-09-04</span>
     </a>
-    <a href="/post/146.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 8</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-09-02</span>
+    <a href="/post/146.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 8</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-09-02</span>
     </a>
-    <a href="/post/144.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 7</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-09-01</span>
+    <a href="/post/144.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 7</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-09-01</span>
     </a>
-    <a href="/post/141.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 6</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-31</span>
+    <a href="/post/141.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 6</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-31</span>
     </a>
-    <a href="/post/139.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 5</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-30</span>
+    <a href="/post/139.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 5</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-30</span>
     </a>
-    <a href="/post/137.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 4</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-29</span>
+    <a href="/post/137.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 4</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-29</span>
     </a>
-    <a href="/post/135.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 3</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-28</span>
+    <a href="/post/135.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 3</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-28</span>
     </a>
-    <a href="/post/128.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 2</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-27</span>
+    <a href="/post/128.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 2</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-27</span>
     </a>
-    <a href="/post/120.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Cron表达式以及常见取值示例</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-26</span>
+    <a href="/post/123.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">使用可选链操作符(?.)和空值合并运算符(??)简化代码</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-26</span>
     </a>
-    <a href="/post/123.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">使用可选链操作符(?.)和空值合并运算符(??)简化代码</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-26</span>
+    <a href="/post/125.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">《信息系统分析与设计》笔记 - 1</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">学习笔记</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-26</span>
     </a>
-    <a href="/post/125.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">《信息系统分析与设计》笔记 - 1</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-26</span>
+    <a href="/post/120.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Cron表达式以及常见取值示例</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-26</span>
     </a>
-    <a href="/post/105.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">ES13（ES2022）中11个新特性解读</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-24</span>
+    <a href="/post/105.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">ES13（ES2022）中11个新特性解读</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-24</span>
     </a>
-    <a href="/post/98.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JavaScript代码整洁（ Clean Coding ）最佳实践</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-18</span>
+    <a href="/post/98.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JavaScript代码整洁（ Clean Coding ）最佳实践</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-18</span>
     </a>
-    <a href="/post/97.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">解决Please make sure you have the correct access rights问题</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-17</span>
+    <a href="/post/97.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">解决Please make sure you have the correct access rights问题</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-17</span>
     </a>
-    <a href="/post/95.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Vite + Vue3  中实现自动化引入文件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-11</span>
+    <a href="/post/95.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Vite + Vue3  中实现自动化引入文件</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-11</span>
     </a>
-    <a href="/post/96.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Vue3 父组件调用子组件的方法-子组件向父组件传值</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-11</span>
+    <a href="/post/96.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Vue3 父组件调用子组件的方法-子组件向父组件传值</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-11</span>
     </a>
-    <a href="/post/93.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Error: permission denied 0.0.0.0:XXX 报错解决</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-10</span>
+    <a href="/post/93.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Error: permission denied 0.0.0.0:XXX 报错解决</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-10</span>
     </a>
-    <a href="/post/94.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Git：You have not concluded your merge (MERGE_HEAD exists) 解决方法</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-08-10</span>
+    <a href="/post/94.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Git：You have not concluded your merge (MERGE_HEAD exists) 解决方法</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-08-10</span>
     </a>
-    <a href="/post/92.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JWT (JSON Web Tokens)跨域认证解决方案</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-28</span>
+    <a href="/post/92.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JWT (JSON Web Tokens)跨域认证解决方案</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-28</span>
     </a>
-    <a href="/post/91.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Vue3 + Vite 实现动态路由</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-27</span>
+    <a href="/post/91.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Vue3 + Vite 实现动态路由</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-27</span>
     </a>
-    <a href="/post/90.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">NPM和Yarn使用指南</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-19</span>
+    <a href="/post/90.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">NPM和Yarn使用指南</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-19</span>
     </a>
-    <a href="/post/74.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Scoop 包管理工具使用指南</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-18</span>
+    <a href="/post/83.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Nodejs安装与环境变量配置</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-18</span>
     </a>
-    <a href="/post/83.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Nodejs安装与环境变量配置</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-18</span>
+    <a href="/post/74.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Scoop 包管理工具使用指南</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-18</span>
     </a>
-    <a href="/post/72.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">版本控制 - Git使用指南</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-15</span>
+    <a href="/post/72.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">版本控制 - Git使用指南</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-15</span>
     </a>
-    <a href="/post/64.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Git如何修改commit信息</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-13</span>
+    <a href="/post/69.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS-Web-API - Ajax</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-13</span>
     </a>
-    <a href="/post/66.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS-Web-API - DOM&amp;amp;BOM</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-13</span>
+    <a href="/post/66.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS-Web-API - DOM&amp;amp;BOM</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-13</span>
     </a>
-    <a href="/post/68.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS-Web-API - 事件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-13</span>
+    <a href="/post/68.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS-Web-API - 事件</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-13</span>
     </a>
-    <a href="/post/69.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS-Web-API - Ajax</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-13</span>
+    <a href="/post/71.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS-Web-API - 存储</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-13</span>
     </a>
-    <a href="/post/70.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">使用 Promise 手写简易Ajax方法</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-13</span>
+    <a href="/post/70.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">使用 Promise 手写简易Ajax方法</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-13</span>
     </a>
-    <a href="/post/71.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS-Web-API - 存储</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-13</span>
+    <a href="/post/64.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Git如何修改commit信息</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">教程·资源</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-13</span>
     </a>
-    <a href="/post/63.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">TypeScript 私有属性加 get/set方法和把属性设成public有区别吗</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-12</span>
+    <a href="/post/63.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">TypeScript 私有属性加 get/set方法和把属性设成public有区别吗</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-12</span>
     </a>
-    <a href="/post/62.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">TypeScript 代码规范</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-07-11</span>
+    <a href="/post/62.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">TypeScript 代码规范</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-07-11</span>
     </a>
-    <a href="/post/58.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 异步进阶 - 宏任务和微任务</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-26</span>
+    <a href="/post/58.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 异步进阶 - 宏任务和微任务</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-26</span>
     </a>
-    <a href="/post/57.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 异步进阶 - 异步循环</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-25</span>
+    <a href="/post/57.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 异步进阶 - 异步循环</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-25</span>
     </a>
-    <a href="/post/56.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 异步进阶 - async / await</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-24</span>
+    <a href="/post/56.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 异步进阶 - async / await</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-24</span>
     </a>
-    <a href="/post/54.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 异步进阶 - Promise</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-22</span>
+    <a href="/post/54.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 异步进阶 - Promise</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-22</span>
     </a>
-    <a href="/post/51.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 异步进阶 - Event  Loop 事件循环/事件轮询</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-20</span>
+    <a href="/post/51.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 异步进阶 - Event  Loop 事件循环/事件轮询</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-20</span>
     </a>
-    <a href="/post/49.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 异步和单线程</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-17</span>
+    <a href="/post/49.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 异步和单线程</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-17</span>
     </a>
-    <a href="/post/48.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - bind 用法及简单实现原理</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-14</span>
+    <a href="/post/48.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - bind 用法及简单实现原理</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-14</span>
     </a>
-    <a href="/post/47.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - this 的应用场景和取值</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-12</span>
+    <a href="/post/47.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - this 的应用场景和取值</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-12</span>
     </a>
-    <a href="/post/45.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 作用域和闭包</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-11</span>
+    <a href="/post/45.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 作用域和闭包</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-11</span>
     </a>
-    <a href="/post/37.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">使用ES6 Class类手写简易JQuery</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-10</span>
+    <a href="/post/37.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">使用ES6 Class类手写简易JQuery</span>
+        
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-10</span>
     </a>
-    <a href="/post/42.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 继承、原型以及原型链</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-10</span>
+    <a href="/post/42.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 继承、原型以及原型链</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-10</span>
     </a>
-    <a href="/post/38.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">如何用 ES6的Class 实现继承</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-09</span>
+    <a href="/post/38.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">如何用 ES6的Class 实现继承</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-09</span>
     </a>
-    <a href="/post/34.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">几个优雅的JavaScript运算符使用技巧</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-07</span>
+    <a href="/post/35.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">前端项目中运行 npm run xxx 或者 yarn run xxx 的时候发生了什么？</span>
+        
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-07</span>
     </a>
-    <a href="/post/35.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">前端项目中运行 npm run xxx 或者 yarn run xxx 的时候发生了什么？</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-07</span>
+    <a href="/post/34.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">几个优雅的JavaScript运算符使用技巧</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-07</span>
     </a>
-    <a href="/post/36.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">变量运算之类型转换的坑</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-06-07</span>
+    <a href="/post/36.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">变量运算之类型转换的坑</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-06-07</span>
     </a>
-    <a href="/post/32.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">史上最轻量的前端框架-VanillaJS？</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-31</span>
+    <a href="/post/32.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">史上最轻量的前端框架-VanillaJS？</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-31</span>
     </a>
-    <a href="/post/25.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">网页用不了鼠标怎么办？</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-26</span>
+    <a href="/post/25.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">网页用不了鼠标怎么办？</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-26</span>
     </a>
-    <a href="/post/24.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS基础 - 值类型和引用类型</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-18</span>
+    <a href="/post/24.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS基础 - 值类型和引用类型</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-18</span>
     </a>
-    <a href="/post/21.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JavaScript对象数组通过参数获取对应的值</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-12</span>
+    <a href="/post/23.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">浅析浏览器存储（localStorage、sessionStorage、cookie) 区别</span>
+        
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-12</span>
     </a>
-    <a href="/post/22.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JavaScript数组中对象的key值从中文转换成英文</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-12</span>
+    <a href="/post/21.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JavaScript对象数组通过参数获取对应的值</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">TypeScript</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-12</span>
     </a>
-    <a href="/post/23.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">浅析浏览器存储（localStorage、sessionStorage、cookie) 区别</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-12</span>
+    <a href="/post/22.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JavaScript数组中对象的key值从中文转换成英文</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-12</span>
     </a>
-    <a href="/post/20.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JavaScript实现监听浏览器窗口大小改变事件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-11</span>
+    <a href="/post/20.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JavaScript实现监听浏览器窗口大小改变事件</span>
+        
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-11</span>
     </a>
-    <a href="/post/19.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">20 个实用的 JavaScript 单行代码</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-10</span>
+    <a href="/post/19.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">20 个实用的 JavaScript 单行代码</span>
+        
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-10</span>
     </a>
-    <a href="/post/16.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Token 分别放在 cookie、localStorage、sessionStorage 有什么不同？</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-09</span>
+    <a href="/post/17.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">JS里面function和Function的区别</span>
+        
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-09</span>
     </a>
-    <a href="/post/17.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">JS里面function和Function的区别</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-09</span>
+    <a href="/post/16.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Token 分别放在 cookie、localStorage、sessionStorage 有什么不同？</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-09</span>
     </a>
-    <a href="/post/18.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">vscode使用editorconfig插件以及常用.editorconfig配置文件</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-09</span>
+    <a href="/post/18.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">vscode使用editorconfig插件以及常用.editorconfig配置文件</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-09</span>
     </a>
-    <a href="/post/15.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">js中return;、return true、return false;区别</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-07</span>
+    <a href="/post/15.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">js中return;、return true、return false;区别</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-07</span>
     </a>
-    <a href="/post/11.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Nodejs 报错 throw er; // Unhandled 'error' event 解决办法</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-05-05</span>
+    <a href="/post/11.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Nodejs 报错 throw er; // Unhandled 'error' event 解决办法</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-05-05</span>
     </a>
-    <a href="/post/7.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">记一次 TimescaleDB 的数据备份与恢复</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-04-26</span>
+    <a href="/post/7.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">记一次 TimescaleDB 的数据备份与恢复</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-04-26</span>
     </a>
-    <a href="/post/3.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Linux 服务器运行指南</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-04-22</span>
+    <a href="/post/5.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">彻底解决断开连接的网络驱动器的问题</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-04-22</span>
     </a>
-    <a href="/post/4.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">Nodejs Error: error:0308010C:digital envelope routines::unsupported 错误提示的解决办法</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-04-22</span>
+    <a href="/post/6.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">自己常用的Git命令笔记</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-04-22</span>
     </a>
-    <a href="/post/5.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">彻底解决断开连接的网络驱动器的问题</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-04-22</span>
+    <a href="/post/3.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Linux 服务器运行指南</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-04-22</span>
     </a>
-    <a href="/post/6.html" class="post-card block p-4 rounded-xl hover:bg-base-200 transition-all duration-200">
-      <div class="flex justify-between items-start gap-4">
-        <span class="font-medium text-base-content">自己常用的Git命令笔记</span>
-        <span class="text-sm text-base-content/40 whitespace-nowrap shrink-0">2022-04-22</span>
+    <a href="/post/4.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">Nodejs Error: error:0308010C:digital envelope routines::unsupported 错误提示的解决办法</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">服务端开发</span>
       </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">22-04-22</span>
+    </a>
+    <a href="/post/start.html" class="post-card flex items-center justify-between gap-3 p-3 rounded-lg hover:bg-base-200 transition-all duration-200">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="font-medium text-base-content truncate">欢迎使用 Typecho</span>
+        <span class="badge badge-xs badge-outline shrink-0 hidden sm:inline-flex">前端开发</span>
+      </div>
+      <span class="text-xs text-base-content/40 whitespace-nowrap shrink-0">20-11-18</span>
     </a>
   </div>
 </main>
-
 <footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
 </body></html>

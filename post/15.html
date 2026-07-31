@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="light">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>js中return;、return true、return false;区别 - Gonwe</title>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <style>body{font-family:'Noto Sans SC',sans-serif}.hero-gradient{background:radial-gradient(ellipse 80% 60% at 50% -20%,oklch(0.7 0.15 250/0.1),transparent)}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content h4{font-weight:700;margin:1em 0 .5em}.post-content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content pre code{background:0;padding:0}.post-content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}.post-content ul,.post-content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}.post-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,.06)}</style>
 </head>
 <body class="min-h-screen bg-base-100">
-<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div></div>
 <main class="max-w-3xl mx-auto px-4 py-12">
   <article>
     <h1 class="text-3xl font-bold mb-2">js中return;、return true、return false;区别</h1>
-    <div class="text-sm text-base-content/50 mb-8">2022-05-07 · 前端开发</div>
+    <div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
+      <span>2022-05-07</span>
+      <span class="badge badge-sm badge-outline">前端开发</span>
+    </div>
     <div class="post-content"><p>一、返回控制与函数结果<br><br>语法为：return 表达式<br><br>语句结束函数执行，返回调用函数，而且把表达式的值作为函数的结果<br><br>二、返回控制<br><br>无函数结果，语法为：return;<br><br> <br><br>在大多数情况下，为事件处理函数返回false,可以防止默认的事件行为。例如，默认情况下点击一个<a>元素，页面会跳转到该元素href属性指定的页面。<br><br>return false; 就相当于终止符，<br><br>return true;  就想当于执行符。<br><br>在js中，return false的作用一般是用来取消默认动作的。比如你单击一个链接除了触发你的onclick事件（如果你指定的话）以外还要触发一个默认事件就是执行页面的跳转。所以如果你想取消对象的默认动作就可以return false.<br><br>首先在js中，我们常用return false来阻止提交表单或者继续执行下面的代码，通俗的来说就是阻止执行默认的行为。<br><br>    function a(){<br>    <br>       if(true)<br>    <br>          return false;<br>    <br>    }<br><br>这是没有任何问题的<br><br>如果我改成这种<br><br>    function Test(){<br>    <br>       a();<br>    <br>       b();<br>    <br>       c();<br>    <br>    }<br><br>即使a函数返回return false阻止提交了，但是不影响b()以及c()函数的执行。在Test()函数里调用a()函数，那a()里面的return false对于Test()函数来说，只是相当于返回值。而不能阻止Test()函数执行。<br><br>总之：return false只在当前函数有效，不会影响其他外部函数的执行。<br><br>三：总结<br><br>retrun true;返回正确的处理结果。<br><br>retrun false;返回错误的处理结果，终止处理。<br><br>retrun;把控制权返回给页面。<br><br> 来源：http://www.cnblogs.com/weiwang/archive/2013/08/19/3268374.html</p></div>
   </article>
 </main>
 <footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+<script>hljs.highlightAll();</script>
 </body></html>
