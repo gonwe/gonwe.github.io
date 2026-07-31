@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title id="pageTitle">Gonwe</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/sql.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body{font-family:'Noto Sans SC',sans-serif}
+    .content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}
+    .content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}
+    .content h4{font-weight:700;margin:1em 0 .5em}
+    .content p{margin-bottom:1em;line-height:1.9;font-size:16px}
+    .content pre{border-radius:8px;overflow-x:auto;margin:1em 0;font-size:14px}
+    .content pre code{background:0;padding:0}
+    .content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}
+    .content img{max-width:100%;border-radius:8px}
+    .content a{color:#06f}
+    .content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}
+    .content ul,.content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}
+    .content table{border-collapse:collapse;width:100%;margin:1em 0}
+    .content td,.content th{border:1px solid #e5e7eb;padding:8px 12px}
+    .content th{background:#f9fafb;font-weight:600}
+    #loading{text-align:center;padding:80px 0;color:#9ca3af}
+    #error{display:none;text-align:center;padding:80px 0}
+  </style>
+</head>
+<body class="min-h-screen bg-base-100">
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200">
+  <div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div>
+  <div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div>
+</div>
+<main class="max-w-3xl mx-auto px-4 py-12">
+  <div id="loading"><span class="loading loading-dots loading-lg"></span></div>
+  <div id="error" class="text-center"><p class="text-error text-lg">文章未找到</p><a href="/" class="btn btn-sm mt-4">返回首页</a></div>
+  <article id="post" style="display:none">
+    <h1 id="postTitle" class="text-3xl font-bold mb-2"></h1>
+    <div class="text-sm text-base-content/50 mb-8 flex items-center gap-3">
+      <span id="postDate"></span><span id="postCat" class="badge badge-sm badge-outline"></span>
+    </div>
+    <div id="postContent" class="content"></div>
+  </article>
+</main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+<script>
+(async () => {
+  const slug = new URLSearchParams(location.search).get('slug');
+  const loading = document.getElementById('loading');
+  const error = document.getElementById('error');
+  const post = document.getElementById('post');
+
+  if (!slug) { loading.style.display = 'none'; error.style.display = 'block'; return; }
+
+  try {
+    const resp = await fetch('/post/' + slug + '.md');
+    if (!resp.ok) throw new Error('not found');
+    let raw = await resp.text();
+    raw = raw.replace(/\r\n/g, '\n');
+
+    const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n/);
+    if (!fmMatch) throw new Error('no front matter');
+
+    const fm = {};
+    fmMatch[1].split('\n').forEach(l => {
+      const m = l.match(/^(\w+):\s*(.*)/);
+      if (m) fm[m[1]] = m[2].trim();
+    });
+
+    document.title = (fm.title || slug) + ' - Gonwe';
+    document.getElementById('postTitle').textContent = fm.title || slug;
+    document.getElementById('postDate').textContent = (fm.date || '').replace(/\//g, '-').substring(0, 10);
+
+    const cat = fm.categories;
+    if (cat) document.getElementById('postCat').textContent = cat;
+    else document.getElementById('postCat').style.display = 'none';
+
+    const mdContent = raw.slice(fmMatch[0].length).trim();
+    marked.setOptions({ breaks: true, gfm: true });
+    document.getElementById('postContent').innerHTML = marked.parse(mdContent);
+    hljs.highlightAll();
+
+    loading.style.display = 'none';
+    post.style.display = 'block';
+  } catch (e) {
+    loading.style.display = 'none';
+    error.style.display = 'block';
+  }
+})();
+</script>
+</body></html>
