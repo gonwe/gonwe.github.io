@@ -17,7 +17,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/sql.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    body{font-family:'Noto Sans SC',sans-serif}
+    body{font-family:'Noto Sans SC',sans-serif;letter-spacing:0.01em}
+    .bg-mesh{background-color:#fafbfc;background-image:radial-gradient(at 0% 0%,oklch(0.7 0.15 250/0.08) 0px,transparent 50%),radial-gradient(at 100% 100%,oklch(0.7 0.12 200/0.06) 0px,transparent 50%)}
     .content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}
     .content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}
     .content h4{font-weight:700;margin:1em 0 .5em}
@@ -26,7 +27,7 @@
     .content pre code{background:0;padding:0}
     .content :not(pre)>code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px;color:#c53030}
     .content img{max-width:100%;border-radius:8px}
-    .content a{color:#06f}
+    .content a{color:oklch(0.6 0.2 250)}
     .content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}
     .content ul,.content ol{padding-left:24px;margin-bottom:1em;line-height:1.8}
     .content table{border-collapse:collapse;width:100%;margin:1em 0}
@@ -34,13 +35,19 @@
     .content th{background:#f9fafb;font-weight:600}
     #loading{text-align:center;padding:80px 0;color:#9ca3af}
     #error{display:none;text-align:center;padding:80px 0}
+    ::selection{background:oklch(0.7 0.15 250/0.2)}
   </style>
 </head>
-<body class="min-h-screen bg-base-100">
-<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200">
-  <div class="flex-1"><a href="/" class="text-xl font-bold tracking-tight">Gonwe</a></div>
-  <div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li></ul></div>
-</div>
+<body class="bg-mesh min-h-screen">
+<header class="sticky top-0 z-50 border-b border-transparent" style="backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);background:rgba(250,251,252,0.75)">
+  <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+    <a href="/" class="font-bold text-lg tracking-tight text-base-content">Gonwe</a>
+    <nav class="flex items-center gap-6 text-sm font-medium text-base-content/60">
+      <a href="/" class="hover:text-base-content transition-colors">首页</a>
+      <a href="/archives" class="hover:text-base-content transition-colors">归档</a>
+    </nav>
+  </div>
+</header>
 <main class="max-w-3xl mx-auto px-4 py-12">
   <div id="loading"><span class="loading loading-dots loading-lg"></span></div>
   <div id="error" class="text-center"><p class="text-error text-lg">文章未找到</p><a href="/" class="btn btn-sm mt-4">返回首页</a></div>
@@ -52,7 +59,11 @@
     <div id="postContent" class="content"></div>
   </article>
 </main>
-<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+<footer class="border-t border-base-200/60">
+  <div class="max-w-4xl mx-auto px-6 py-8 text-center text-sm text-base-content/30">
+    © 2020 – 2026 Gonwe
+  </div>
+</footer>
 <script>
 (async () => {
   const slug = new URLSearchParams(location.search).get('slug');
