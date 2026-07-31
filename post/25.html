@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>网页用不了鼠标怎么办？ - Gonwe</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+</head>
+<body class="min-h-screen bg-base-100">
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12">
+  <article>
+    <h1 class="text-3xl font-bold mb-2">网页用不了鼠标怎么办？</h1>
+    <div class="text-sm text-base-content/50 mb-8">2022-05-26 · 前端开发</div>
+    <div class="post-content"><p>在chrome的收藏夹上，右键，添加网页<br><br>命名为：破解鼠标限制<br><br>在网址上填上这个↓<br><br>``<code>javascript<br>javascript:(function() { function R(a){ona = "on"+a; if(window.addEventListener) window.addEventListener(a, function (e) { for(var n=e.originalTarget; n; n=n.parentNode) n[ona]=null; }, true); window[ona]=null; document[ona]=null; if(document.body) document.body[ona]=null; } R("contextmenu"); R("click"); R("mousedown"); R("mouseup"); R("selectstart");})()<br></code>``<br><br>保存在书签栏<br><br><br><br>，然后你打开你那个网站，再点击刚刚保存的书签，就可以用鼠标复制了。<br><br>但是，发现不能粘贴，还好我有jason-handle插件可以用，右键选jason-handle，复制文字，差点翻车。<br><br><br><br>方法2，直接点击打印，在预览窗口复制，粘贴。最快的方法。</p></div>
+  </article>
+</main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+</body></html>

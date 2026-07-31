@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>vscode使用editorconfig插件以及常用.editorconfig配置文件 - Gonwe</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+</head>
+<body class="min-h-screen bg-base-100">
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12">
+  <article>
+    <h1 class="text-3xl font-bold mb-2">vscode使用editorconfig插件以及常用.editorconfig配置文件</h1>
+    <div class="text-sm text-base-content/50 mb-8">2022-05-09 · 前端开发</div>
+    <div class="post-content"><p><strong>简介</strong><br>EditorConfig和Prettier一样，都是用来配置格式化你的代码的，这个格式化代码，要和你lint配置相符！否则会出现你格式化代码以后，却不能通过你的代码校验工具的检验<br><br>EditorConfig 文件中的设置用于在基本代码库中维持一致的编码风格和设置，例如缩进样式、选项卡宽度、行尾字符以及编码等，而无需考虑使用的编辑器vscode使用editorconfig插件以及.editorconfig配置文件说明详解<br>或 IDE<br><br>editorConfig不是什么软件，而是一个名称为.editorconfig的自定义文件。该文件用来定义项目的编码规范，编辑器的行为会与.editorconfig 文件中定义的一致，并且其优先级比编辑器自身的设置要高，这在多人合作开发项目时十分有用而且必要<br><br>有些编辑器默认支持editorConfig，如webstorm；而有些编辑器则需要安装editorConfig插件，如ATOM、Sublime、VS Code等<br><br>当打开一个文件时，EditorConfig插件会在打开文件的目录和其每一级父目录查找.editorconfig文件，直到有一个配置文件root=true<br><br>EditorConfig的配置文件是从上往下读取的并且最近的EditorConfig配置文件会被最先读取. 匹配EditorConfig配置文件中的配置项会按照读取顺序被应用, 所以最近的配置文件中的配置项拥有优先权<br><br>如果.editorconfig文件没有进行某些配置，则使用编辑器默认的设置<br><br><strong>配置.editorconfig</strong><br>在当前项目根目录下添加.editorconfig文件<br><br>``<code>bash<br>root = true<br><br>[*]<br>charset = utf-8<br>indent_style = tab<br>indent_size = 4<br>insert_final_newline = true<br>trim_trailing_whitespace = true<br>end_of_line = lf<br><br>[*.{yml,yaml}]<br>indent_size = 2<br>indent_style = space<br><br>[*.md]<br>max_line_length = off<br>trim_trailing_whitespace = false<br><br></code>``<br><br><strong>安装 EditorConfig扩展</strong><br>在vscode里面安装EditorConfig<br><br><br>EditorConfig扩展的作用是读取第一步创建的editorconfig文件中定义的规则，并覆盖user/workspace settings中的对应配置（从这我们也可以看出vscode本身其实是并不直接支持editorconfig的）<br><br>全局安装或局部安装<br><br>editorconfig依赖包(npm install -g editorconfig | npm install -D editorconfig)<br>安装editorconfig依赖包主要是因为EditorConfig依赖于editorconfig包，不安装的可能会导致EditorConfig无法正常解析我们在第一步定义的editorconfig文件</p></div>
+  </article>
+</main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+</body></html>

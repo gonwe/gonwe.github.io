@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Android 开发环境搭建 - Gonwe</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+</head>
+<body class="min-h-screen bg-base-100">
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12">
+  <article>
+    <h1 class="text-3xl font-bold mb-2">Android 开发环境搭建</h1>
+    <div class="text-sm text-base-content/50 mb-8">2024-03-22 · 教程·资源</div>
+    <div class="post-content"><p>Windows 下的开发环境搭建<br><br>[安装 scoop包管理器][1] <br><br>安装 Java<br><br><h1>安装 Java 环境</h1><br>scoop bucket add java<br>scoop install openjdk8-redhat-jre<br><br>安装 Android Studio<br><br><h1>安装 Android Studio</h1><br>scoop bucket add extras<br>scoop install android-studio<br><br>安装 Android SDK<br><br>首次打开Android Studio需要安装SDK，根据步骤进行安装即可<br>![1.png][2]<br>配置Android SDK 命令行工具<br><br>在 Android Studio 中，依次点击 File > Project Structure。在左窗格中，选择 SDK Location。路径显示在 Android SDK location 下。<br>![2.png][3]<br>在系统变量新建ANDROID_HOME  变量，并将sdk路径作为变量值<br><br><br>复制SDK路径加上\tools\bin并在资源管理器打开<br><br>将xxx\Android\Sdk\tools\bin 路径添加到系统变量的Path即可使用sdkmanager命令行工具<br>![3.png][4]<br>安装 cmdline-tools<br><br><h1>列出所有支持的 SDK</h1><br>sdkmanager --list<br><h1>安装 cmdline-tools</h1><br>sdkmanager "cmdline-tools;latest"<br><br>安装JDK 新版本<br><br><h1>安装 jdk新版本</h1><br>scoop install openjdk17<br><br>修正 SDKManager 与 Java 高版本的兼容问题<br><br>确认上述步骤正确配置<br><br>将 cmdline-tools/latest/bin 目录替换掉到环境变量的 PATH 内的C:\Users\用户名\AppData\Local\Android\Sdk\tools\bin<br>![4.png][5]<br>目录默认在 C:\Users\用户名\AppData\Local\Android\Sdk\cmdline-tools\latest\bin<br><br>重启命令行终端或VSCode生效，如果未生效需要注销系统重新登录<br><br>通过 sdkmanager 安装需要版本的 sdk<br><br><h1>选择并安装需要的 platform，如 安装 platforms;android-32</h1><br>sdkmanager "platforms;android-32"<br><h1>选择并安装build-tools 如</h1><br>sdkmanager "build-tools;32.0.0"<br><br>安装 Gradle<br><br>scoop install gradle<br><br>为 gradle 配置全局代理，加快下载速度，修改文件 C:\Users\用户名\.gradle\gradle.properties（不存在则创建）<br><br><h1>设置 http/https 代理</h1><br>systemProp.http.proxyHost=localhost<br>systemProp.http.proxyPort=7890<br>systemProp.https.proxyHost=localhost<br>systemProp.https.proxyPort=7890<br><h1>设置 socks 代理</h1><br>systemProp.socks.proxyHost=localhost<br>systemProp.socks.proxyPort=7890<br><br>安装 Android NDK （可选）<br><br><h1>如安装 NDK 21</h1><br>sdkmanager "ndk;21.4.7075529"<br><br><br>  [1]: https://www.gonwe.cn/index.php/archives/74/<br>  [2]: https://www.gonwe.cn/usr/uploads/2024/05/3589329820.png<br>  [3]: https://www.gonwe.cn/usr/uploads/2024/05/3095472755.png<br>  [4]: https://www.gonwe.cn/usr/uploads/2024/05/2044840419.png<br>  [5]: https://www.gonwe.cn/usr/uploads/2024/05/3962190385.png</p></div>
+  </article>
+</main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+</body></html>

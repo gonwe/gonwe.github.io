@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>解决Please make sure you have the correct access rights问题 - Gonwe</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+</head>
+<body class="min-h-screen bg-base-100">
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12">
+  <article>
+    <h1 class="text-3xl font-bold mb-2">解决Please make sure you have the correct access rights问题</h1>
+    <div class="text-sm text-base-content/50 mb-8">2022-08-17 · 教程·资源</div>
+    <div class="post-content"><p>问题:<br><br>> Please make sure you have the correct access rights and the repository exists <br><br>原因:<br><br>> 公钥出问题了,需要删除.ssh下文件,然后重设置用户名和邮箱再重新生成ssh公钥即可解决<br><br>下面请看解决办法!<br><br>打开终端 输入<br><br>``<code>bash<br><h1>进入ssh文件夹</h1><br>$ cd ~/.ssh<br><br><h1>查看是否存在</h1><br>$ ls -r <br> Directory: C:\Users\Administrator\.ssh<br>Mode                 LastWriteTime         Length Name<br>----                 -------------         ------ ----<br>-a---            2022/4/8    16:19            122 config<br>-a---            2021/8/6    16:38           2602 id_rsa<br>-a---            2021/8/6    16:38            570 id_rsa.pub<br>-a---           2022/8/17    11:38           1338 known_hosts<br>-a---            2021/9/3    16:35            379 known_hosts.old<br><br><h1>删除已经存在的id_rsa文件</h1><br>$  rm .\id_rsa<br>$  rm .\id_rsa.pub<br><br><h1>输入你的邮箱重新生成公钥</h1><br>$ ssh-keygen -t rsa -C 'your@qq.com'<br><br><h1>输入用户名密码阶段 可以直接 enter 跳过</h1><br>Generating public/private rsa key pair.<br>Enter file in which to save the key (C:\Users\Administrator/.ssh/id_rsa):<br>Enter passphrase (empty for no passphrase):<br>Enter same passphrase again:<br>Your identification has been saved in C:\Users\Administrator/.ssh/id_rsa.<br>Your public key has been saved in C:\Users\Administrator/.ssh/id_rsa.pub.<br>The key fingerprint is:<br>SHA256:K7q5udGqpJlbAvMA9hYhcH0JRdS0 your@qq.com<br>The key's randomart image is:<br>+---[RSA 3072]----+<br>| . +..    .      |<br>|  + +            |<br>|.. =    S        |<br>|<em> </em> o.   .       |<br>|=<em>.</em>. o .        |<br>|+=+  * .         |<br>|o+..O+           |<br>+----[SHA256]-----+<br><br><h1>查看是否生成成功</h1><br>$ cat ~/.ssh/id_rsa.pub<br></code>`<code><br><br>生成成功<br><br></code>`<code>bash<br>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDyGYJ0Qb/5iYnu5UgjKUwUAFAhG7QabJZclicf2brcKaEIO1T6OZLRv8G9fhk5H7cnWbVYzDBEDVRPusIHEgxosdf1iQ99nh1p+yguJ/LcYM1TGAgYEWpYs3SMjLXZ29uDh5o8+ID9nnAFMYdOgvFcK4bbpAvQBV8CH1ElRua0l974tnvE28k7Sc7KR2JduOqtoSIYSFM4rBy7xwSZYk6YPyFsmMbgaVtn8hbo384XEa5nH2jCsfYBur/nQ4Rb6K+qriEw01hi4UCSQFU+1HETGxi3EVr0Ja0tt6ch705Ik6ZqspO9Y6qAKi9IPgzPN8RCHf1bP3unMm/s= your@qq.com<br></code>`<code><br><br>将内容复制到</code>github`上设置 ssh密钥的地方<br><br>下一步保存 就OK啦！</p></div>
+  </article>
+</main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+</body></html>

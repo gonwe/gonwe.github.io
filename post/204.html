@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>使用Chrome浏览器进行H5页面调试 - Gonwe</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>body{font-family:'Noto Sans SC',sans-serif}.post-content{line-height:1.9;font-size:16px;color:rgba(0,0,0,0.82)}.post-content p{margin-bottom:1em}.post-content h2{font-size:1.5em;font-weight:700;margin:1.5em 0 .5em}.post-content h3{font-size:1.25em;font-weight:700;margin:1.2em 0 .5em}.post-content pre{background:#f5f5f5;border-radius:8px;padding:16px;overflow-x:auto;margin:1em 0;font-size:14px}.post-content code{font-size:.9em;background:rgba(0,0,0,.05);padding:2px 6px;border-radius:4px}.post-content pre code{background:0;padding:0}.post-content img{max-width:100%;border-radius:8px}.post-content a{color:#06f;border-bottom:1px solid rgba(0,102,255,.3)}.post-content a:hover{border-color:#06f}.post-content blockquote{border-left:4px solid #e5e7eb;padding-left:16px;color:#6b7280;margin:1em 0}ul,ol{padding-left:24px;margin-bottom:1em}</style>
+</head>
+<body class="min-h-screen bg-base-100">
+<div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200"><div class="flex-1"><a href="/" class="text-xl font-bold">Gonwe</a></div><div class="flex-none"><ul class="menu menu-horizontal px-1 gap-1"><li><a href="/">首页</a></li><li><a href="/archives">归档</a></li><li><a href="/tags">标签</a></li></ul></div></div>
+<main class="max-w-3xl mx-auto px-4 py-12">
+  <article>
+    <h1 class="text-3xl font-bold mb-2">使用Chrome浏览器进行H5页面调试</h1>
+    <div class="text-sm text-base-content/50 mb-8">2023-11-08 · 教程·资源</div>
+    <div class="post-content"><h2>1. 确保网络环境（科学上网）</h2><br><br>在进行H5页面调试之前，请确保您的网络环境正常。可以科学上网，如果网络不稳定，可能会导致调试过程中出现问题。<br><br><h2>2. 手机通过数据线插入电脑，打开文件传输功能</h2><br><br>将您的手机通过数据线连接到电脑，并确保手机已开启“文件传输”功能。这将允许您在电脑上访问和操作手机上的文件。<br><br><h2>3. 允许当前电脑调试</h2><br><br>在连接成功后，您需要在手机上允许当前电脑进行调试。具体操作方法如下：<br><br>- 打开手机上的“设置”应用。<br>- 向下滚动并点击“关于手机”。<br>- 点击“版本号”七次，直到出现提示“开发者选项已启用”。<br>- 返回“设置”应用，找到并点击“开发者选项”。<br>- 在开发者选项中，找到并勾选“USB调试”。<br><br>完成以上步骤后，您的手机将允许当前电脑进行调试。<br><br><h2>4. 在Chrome浏览器里输入：chrome://inspect/#devices</h2><br><br>打开Chrome浏览器，并在地址栏中输入以下网址：<code>chrome://inspect/#devices</code>。这将打开一个包含可用设备列表的页面。<br><br><h2>5. 选择要调试的页面，如下图：</h2><br>!<a href="https://www.gonwe.cn/usr/uploads/2023/11/4118962953.png" target="_blank" rel="noopener">QQ截图20231108103929.png</a><br><br>在设备列表中找到您要调试的H5页面对应的设备，然后点击该设备旁边的“inspect”按钮。这将打开一个新的浏览器窗口，显示您要调试的H5页面。<br><br><h2>6. 开始工作了〜</h2><br><br>现在您可以在新的浏览器窗口中对H5页面进行调试了。您可以查看元素、修改样式、添加事件监听器等，以帮助您定位和解决问题。<br><br><h2>常用调试命令</h2><br><br>- <code>console.log()</code>:在控制台输出信息。<br>- <code>element.innerHTML</code>:获取或设置元素的HTML内容。<br>- <code>element.style</code>:获取或设置元素的样式。<br>- <code>element.onclick</code>:为元素添加点击事件处理函数。<br>- <code>element.addEventListener()</code>:为元素添加事件监听器。<br><br><h2>总结</h2><br><br>使用Chrome浏览器进行H5页面的调试非常方便快捷，可以大大提高开发效率。</p></div>
+  </article>
+</main>
+<footer class="footer footer-center pb-8 text-base-content/40 text-sm"><div><p>© 2018 - 2026 Gonwe</p></div></footer>
+</body></html>
