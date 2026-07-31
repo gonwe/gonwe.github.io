@@ -1,121 +1,71 @@
-<html>
-  <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Gridea</title>
-<link rel="shortcut icon" href="https://gonwe.github.io//favicon.ico?v=1584539068136">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
-<link rel="stylesheet" href="https://gonwe.github.io//styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Gridea - Atom Feed" href="https://gonwe.github.io//atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gonwe</title>
+  <meta name="description" content="温故而知新" />
+  <link rel="shortcut icon" href="/favicon.ico?v=1584539068136" />
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .hero-gradient {
+      background: radial-gradient(ellipse 80% 60% at 50% -20%, oklch(0.7 0.15 250 / 0.12), transparent);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-base-100">
 
-
-
-    <meta name="description" content="温故而知新" />
-  </head>
-  <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://gonwe.github.io/">
-  <img class="avatar" src="https://gonwe.github.io//images/avatar.png?v=1584539068136" alt="">
-  </a>
-  <h1 class="site-title">
-    Gridea
-  </h1>
-  <p class="site-description">
-    温故而知新
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about" class="menu">
-          关于
-        </a>
-      
-    
+  <!-- Navbar -->
+  <div class="navbar bg-base-100/80 backdrop-blur-sm sticky top-0 z-50 border-b border-base-200">
+    <div class="flex-1">
+      <a href="/" class="text-xl font-bold tracking-tight text-base-content">Gonwe</a>
+    </div>
+    <div class="flex-none">
+      <ul class="menu menu-horizontal px-1 gap-1">
+        <li><a href="/">首页</a></li>
+        <li><a href="/archives">归档</a></li>
+        <li><a href="/tags">标签</a></li>
+        <li><a href="/post/about">关于</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-</div>
 
-    
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://gonwe.github.io/post/hello-gridea/">
-        <h2 class="post-title">Hello Gridea</h2>
-      </a>
-      <div class="post-info">
-        <span>
-          2018-12-12
-        </span>
-        <span>
-          2 min read
-        </span>
-        
-          <a href="https://gonwe.github.io/tag/u0r6XvqsC/" class="post-tag">
-            # Gridea
-          </a>
-        
-      </div>
-      
-        <a href="https://gonwe.github.io/post/hello-gridea/" class="post-feature-image" style="background-image: url('https://gonwe.github.io//post-images/hello-gridea.png')">
-        </a>
-      
-      <div class="post-abstract">
-        <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-
-      </div>
-    </article>
-  
-</div>
-
-    
-        <div class="pagination-container">
-  
-  
-</div>
-
-    
-        <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-  <a class="rss" href="https://gonwe.github.io//atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+  <!-- Hero -->
+  <section class="hero-gradient">
+    <div class="hero min-h-[70vh]">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <div class="avatar mb-8">
+            <div class="w-28 rounded-full ring ring-base-300 ring-offset-base-100 ring-offset-4">
+              <img src="/images/avatar.png?v=1584539068136" alt="avatar" />
+            </div>
+          </div>
+          <h1 class="text-4xl font-bold tracking-tight text-base-content">Gonwe</h1>
+          <p class="py-4 text-lg text-base-content/60">温故而知新</p>
+          <p class="text-base-content/40 text-sm max-w-sm mx-auto leading-relaxed">
+            记录思考，分享知识。这里是我的个人空间。
+          </p>
+          <div class="mt-8 flex justify-center gap-4">
+            <a href="/archives" class="btn btn-primary btn-wide">浏览文章</a>
+            <a href="/post/about" class="btn btn-ghost">了解更多</a>
+          </div>
+        </div>
       </div>
     </div>
-  </body>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer footer-center pb-8 text-base-content/40 text-sm">
+    <div>
+      <p>© 2018 - 2026 Gonwe. All rights reserved.</p>
+      <a href="/atom.xml" class="link link-hover">RSS</a>
+    </div>
+  </footer>
+
+</body>
 </html>
