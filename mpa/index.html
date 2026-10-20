@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>西昌学院 MPA 备考系统 · 2026年12月管理类联考</title>
+<style>
+:root{
+  --bg:#f6f3ec; --card:#ffffff; --ink:#253230; --muted:#71807a; --line:#e6e1d3;
+  --green:#1a6b52; --green-deep:#0f4d3a; --green-soft:#e9f3ef; --accent:#c2410c; --accent-soft:#fdeee6;
+  --gold:#a97e12; --gold-soft:#f7f0dc; --red:#b3402f; --red-soft:#fbeeec; --ok:#2f7d4f;
+  --radius:14px; --shadow:0 1px 3px rgba(31,42,38,.06),0 8px 24px rgba(31,42,38,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif;line-height:1.65;font-size:15px}
+.serif{font-family:"Noto Serif SC","Songti SC","SimSun",serif}
+a{color:var(--green)}
+
+/* 顶栏 */
+header{background:linear-gradient(135deg,var(--green-deep),var(--green));color:#fff;padding:26px 20px 0;box-shadow:var(--shadow)}
+.h-wrap{max-width:1080px;margin:0 auto}
+.h-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;padding-bottom:14px}
+.h-title{font-size:24px;font-weight:700;letter-spacing:1px}
+.h-sub{font-size:12.5px;opacity:.85}
+.h-badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:2px 12px;font-size:12px}
+nav{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+nav button{background:none;border:none;color:rgba(255,255,255,.75);font-size:15px;padding:10px 16px;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;font-family:inherit}
+nav button.active{color:#fff;font-weight:600;border-bottom-color:#f5c66b}
+nav button:hover{color:#fff}
+
+main{max-width:1080px;margin:24px auto 60px;padding:0 20px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px}
+.card h3{font-size:16.5px;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.card h3 .tag{font-size:11px;font-weight:400;background:var(--green-soft);color:var(--green);border-radius:6px;padding:2px 8px}
+.muted{color:var(--muted);font-size:13px}
+.small{font-size:12.5px}
+
+/* 倒计时 */
+.countdown{background:linear-gradient(135deg,#0f4d3a,#1a6b52);color:#fff;border:none;text-align:center;padding:26px}
+.countdown .days{font-size:64px;font-weight:800;line-height:1.1;font-family:"Noto Serif SC",serif}
+.countdown .days span{font-size:20px;font-weight:400}
+.countdown .lbl{opacity:.85;font-size:13px;margin-top:4px}
+.countdown .exam-time{margin-top:10px;font-size:12.5px;background:rgba(255,255,255,.12);border-radius:8px;padding:6px 10px;display:inline-block}
+
+/* 警示条 */
+.alert{background:var(--accent-soft);border:1px solid #f0cdb8;border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;font-size:13.5px;color:#7c3a12}
+.alert b{color:var(--accent)}
+
+/* 打卡 */
+.task{display:flex;align-items:center;gap:12px;padding:10px 6px;border-bottom:1px dashed var(--line);cursor:pointer;user-select:none}
+.task:last-child{border-bottom:none}
+.task .box{width:22px;height:22px;border-radius:6px;border:2px solid #c9d2cd;flex:none;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:all .15s}
+.task.done .box{background:var(--green);border-color:var(--green)}
+.task.done .txt{text-decoration:line-through;color:var(--muted)}
+.task .ic{width:30px;height:30px;border-radius:8px;background:var(--gold-soft);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;font-size:13px}
+.progress-bar{height:8px;background:#edeae2;border-radius:99px;overflow:hidden;margin-top:10px}
+.progress-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),#3e9b7c);border-radius:99px;transition:width .3s}
+
+/* 统计小卡 */
+.stat{display:flex;align-items:baseline;gap:6px}
+.stat .num{font-size:30px;font-weight:800;color:var(--green);font-family:"Noto Serif SC",serif}
+.stat .num.red{color:var(--accent)}
+
+/* 科目卡 / 按钮 */
+.subj-card{cursor:pointer;transition:transform .12s,box-shadow .12s;position:relative;overflow:hidden}
+.subj-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(31,42,38,.13)}
+.subj-card .ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;margin-bottom:10px}
+.btn{display:inline-block;background:var(--green);color:#fff;border:none;border-radius:9px;padding:9px 18px;font-size:14px;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.btn:hover{opacity:.88}
+.btn.ghost{background:var(--green-soft);color:var(--green)}
+.btn.warn{background:var(--accent)}
+.btn.sm{padding:5px 12px;font-size:12.5px;border-radius:7px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* 阶段时间轴 */
+.phase{position:relative;padding:0 0 0 26px;border-left:2px solid var(--line);margin-left:8px}
+.phase::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:#c9d2cd;border:2px solid #fff}
+.phase.done::before{background:var(--green)}
+.phase.active::before{background:var(--gold);box-shadow:0 0 0 4px var(--gold-soft)}
+.phase .p-time{font-size:12px;color:var(--muted)}
+.phase h4{font-size:15px}
+.phase .pill{font-size:11px;border-radius:6px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+.pill.done{background:var(--green-soft);color:var(--green)}
+.pill.active{background:var(--gold-soft);color:var(--gold)}
+.pill.upcoming{background:#eef0ee;color:#8a968f}
+
+/* 周计划 */
+.week{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;background:var(--card)}
+.week.now{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-soft)}
+.week-head{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;cursor:pointer;background:#fbfaf6}
+.week-head b{font-size:14.5px}
+.week-body{padding:4px 18px 14px;display:none}
+.week.open .week-body{display:block}
+.wtask{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed var(--line);cursor:pointer}
+.wtask:last-child{border:none}
+.wtask .box{width:20px;height:20px;border-radius:6px;border:2px solid #c9d2cd;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;margin-top:3px}
+.wtask.done .box{background:var(--green);border-color:var(--green)}
+.wtask.done .txt{text-decoration:line-through;color:var(--muted)}
+
+/* 手风琴（资料） */
+.acc{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden;background:var(--card)}
+.acc-head{padding:13px 18px;cursor:pointer;font-weight:600;font-size:15px;background:#fbfaf6;display:flex;justify-content:space-between;align-items:center}
+.acc-head .arr{color:var(--muted);transition:transform .2s}
+.acc.open .acc-head .arr{transform:rotate(90deg)}
+.acc-body{display:none;padding:6px 18px 16px}
+.acc.open .acc-body{display:block}
+.note-card{background:#fbfaf5;border:1px solid #efeadd;border-radius:10px;padding:12px 16px;margin-top:10px}
+.note-card h4{font-size:14px;color:var(--green-deep);margin-bottom:6px}
+.note-card ul{padding-left:18px}
+.note-card li{font-size:13.5px;margin:4px 0;color:#3c4a44}
+.subj-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.subj-tabs button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:7px 16px;font-size:14px;cursor:pointer;font-family:inherit;color:var(--muted)}
+.subj-tabs button.active{background:var(--green);border-color:var(--green);color:#fff;font-weight:600}
+
+/* 刷题练习 */
+.qtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:10px;flex-wrap:wrap}
+.qtop .topic{font-size:12px;background:var(--green-soft);color:var(--green);border-radius:6px;padding:3px 10px}
+.qtop .pos{font-size:13px;color:var(--muted)}
+.passage{background:#f4f8f6;border:1px solid #dde9e3;border-radius:10px;padding:14px 18px;font-size:13.8px;color:#33413b;margin-bottom:16px;line-height:1.8}
+.qtext{font-size:16px;font-weight:600;line-height:1.8;white-space:pre-wrap;margin-bottom:18px}
+.opt{display:flex;gap:12px;align-items:flex-start;border:2px solid var(--line);border-radius:11px;padding:12px 16px;margin-bottom:10px;cursor:pointer;transition:border-color .12s,background .12s;background:#fff}
+.opt:hover{border-color:#b9c9c1}
+.opt .letter{width:26px;height:26px;border-radius:50%;background:#eef1ec;color:var(--muted);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none;font-size:13px}
+.opt.selected{border-color:var(--green);background:var(--green-soft)}
+.opt.selected .letter{background:var(--green);color:#fff}
+.opt.right{border-color:var(--ok);background:#edf7f0}
+.opt.right .letter{background:var(--ok);color:#fff}
+.opt.wrong{border-color:var(--red);background:var(--red-soft)}
+.opt.wrong .letter{background:var(--red);color:#fff}
+.opt .otext{font-size:14.5px}
+.verdict{border-radius:10px;padding:12px 16px;margin:14px 0;font-size:14px;font-weight:600}
+.verdict.ok{background:#edf7f0;color:var(--ok);border:1px solid #cde8d5}
+.verdict.no{background:var(--red-soft);color:var(--red);border:1px solid #f0d2cc}
+.explain{background:var(--gold-soft);border:1px solid #ecd9a8;border-radius:10px;padding:13px 17px;font-size:14px;color:#5a4a1a;margin-top:10px}
+.explain b{color:var(--gold)}
+.qnav{display:flex;justify-content:space-between;gap:10px;margin-top:18px;flex-wrap:wrap}
+.dots{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+.dot{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);font-size:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);background:#fff}
+.dot.cur{outline:2px solid var(--gold)}
+.dot.ok{background:var(--green);color:#fff;border-color:var(--green)}
+.dot.no{background:var(--red);color:#fff;border-color:var(--red)}
+.dot.skip{background:#eee9dd;color:#9a927e}
+
+/* 错题本 */
+.wrong-item{border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px;background:var(--card)}
+.wrong-item .wq{font-size:14px;font-weight:600;margin:6px 0}
+.wrong-item .wa{font-size:13px;color:var(--red);margin-bottom:8px}
+
+.mode-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}
+.mode-btn{border:2px solid var(--line);border-radius:11px;padding:14px 12px;text-align:center;cursor:pointer;background:#fff;transition:all .12s}
+.mode-btn:hover{border-color:var(--green);background:var(--green-soft)}
+.mode-btn b{display:block;font-size:14.5px;color:var(--ink)}
+.mode-btn span{font-size:12px;color:var(--muted)}
+
+.quote{font-size:14px;color:var(--green-deep);background:var(--green-soft);border-radius:10px;padding:12px 16px;margin-top:14px}
+.addtask{display:flex;gap:8px;margin-top:12px}
+.addtask input{flex:1;border:1px solid var(--line);border-radius:9px;padding:8px 12px;font-size:14px;font-family:inherit;background:#fff}
+.addtask input:focus{outline:2px solid var(--green-soft);border-color:var(--green)}
+.custom-x{color:var(--red);cursor:pointer;font-size:16px;padding:0 4px}
+.section-title{font-size:17px;font-weight:700;margin:26px 0 12px;display:flex;align-items:center;gap:8px}
+.section-title::after{content:"";flex:1;height:1px;background:var(--line)}
+.result-hero{text-align:center;padding:26px 10px}
+.result-hero .big{font-size:44px;font-weight:800;font-family:"Noto Serif SC",serif}
+.footer-note{text-align:center;color:var(--muted);font-size:12px;margin-top:36px;line-height:1.8}
+table.kv{width:100%;border-collapse:collapse;font-size:13.5px}
+table.kv td{padding:8px 6px;border-bottom:1px dashed var(--line);vertical-align:top}
+table.kv td:first-child{white-space:nowrap;color:var(--green-deep);font-weight:600;width:90px}
+@media (max-width:640px){
+  .countdown .days{font-size:48px}
+  main{margin:16px auto 40px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="h-wrap">
+    <div class="h-top">
+      <div class="h-title serif">西昌学院 · MPA 备考系统</div>
+      <div class="h-badge">管理类联考 199 + 英语二 204</div>
+      <div class="h-sub">2026年12月19日—20日 · 全国硕士研究生招生考试</div>
+    </div>
+    <nav id="nav"></nav>
+  </div>
+</header>
+
+<main id="view"></main>
+
+<div class="footer-note" style="max-width:1080px;margin:0 auto;padding:0 20px 40px">
+  数据保存在本机浏览器（localStorage），换设备不会同步 · 考试时间以研招网（yz.chsi.com.cn）正式通知为准<br>
+  本系统为个人学习工具 · 祝金榜题名，一战成硕
+</div>
+
+<script src="data.js"></script>
+<script src="notes.js"></script>
+<script>
+/* ================= 存储层 ================= */
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem('mpa_'+k); return v===null ? d : JSON.parse(v);}catch(e){ return d; } },
+  set(k, v){ localStorage.setItem('mpa_'+k, JSON.stringify(v)); }
+};
+
+/* ================= 全局状态 ================= */
+const TABS = [
+  {key:'home', name:'总览'},
+  {key:'plan', name:'学习规划'},
+  {key:'notes', name:'复习资料'},
+  {key:'quiz', name:'刷题中心'},
+  {key:'wrong', name:'错题本'}
+];
+let state = { tab:'home', notesSubj:'math', quizSubj:'math', practice:null };
+let wrong = store.get('wrong', []);
+let stats = store.get('stats', {answered:0, correct:0, bySubj:{}});
+const examDate = new Date(EXAM.date);
+
+/* ================= 工具 ================= */
+const $ = sel => document.querySelector(sel);
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
+const LETTERS = ['A','B','C','D','E'];
+const fmt = n => n.toLocaleString('zh-CN');
+function todayKey(){ const d = new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function currentWeek(){ // 根据今天日期定位所处周（10.20 起至考前）
+  const nowd = new Date();
+  let hit = null;
+  WEEKS.forEach(w=>{
+    const m = w.time.match(/(\d+)月(\d+)日/);
+    if(!m) return;
+    const start = new Date(2026, m[1]-1, m[2]);
+    const end = new Date(start.getTime() + 7*86400000);
+    if(nowd >= start && nowd < end) hit = w;
+  });
+  return hit;
+}
+function daysLeft(){ return Math.ceil((examDate - new Date()) / 86400000); }
+function qById(id){ return QUESTIONS.find(q => q.id === id); }
+function subjOf(id){ return id[0]==='m'||id[0]==='d' ? 'math' : (id[0]==='l' ? 'logic' : 'english'); }
+function subjCount(key){ return QUESTIONS.filter(q=>subjOf(q.id)===key).length; }
+function passageOf(q){ if(q.passage) return q.passage; const first = QUESTIONS.find(x=>x.passage && x.subject===q.subject && x.topic===q.topic); return first ? first.passage : null; }
+function saveStats(){ store.set('stats', stats); store.set('wrong', wrong); }
+
+/* ================= 导航 ================= */
+function go(tab){
+  state.tab = tab;
+  if(tab!=='quiz') state.practice = null; // 离开刷题则放弃进行中的练习（不清理已答统计）
+  renderNav();
+  window.scrollTo(0,0);
+  render();
+}
+function renderNav(){
+  $('#nav').innerHTML = TABS.map(t =>
+    `<button class="${state.tab===t.key?'active':''}" onclick="go('${t.key}')">${t.name}${t.key==='wrong'&&wrong.length?`（${wrong.length}）`:''}</button>`
+  ).join('');
+}
+
+/* ================= 总览 ================= */
+function renderHome(){
+  const d = daysLeft();
+  const daily = store.get('daily_'+todayKey(), []);
+  const dailyTotal = DAILY_TASKS.length;
+  const doneCount = daily.length;
+  const inWindow = new Date() >= new Date('2026-10-15') && new Date() <= new Date('2026-10-24');
+  const rate = stats.answered ? Math.round(stats.correct/stats.answered*100) : 0;
+  const quote = QUOTES[Math.floor(Math.random()*QUOTES.length)];
+
+  let weekBlock = '';
+  const curWeek = currentWeek();
+
+  $('#view').innerHTML = `
+  ${inWindow ? `<div class="alert" style="margin-bottom:16px"><b>⏰ 报名窗口期：2026年10月15日—24日（每日9:00—22:00）</b>。请尽快登录研招网 yz.chsi.com.cn 完成网上报名与缴费，逾期不得补办；随后按报考点要求完成网上确认。</div>` : ''}
+  <div class="grid g2">
+    <div class="card countdown">
+      <div class="lbl">距离初试还有</div>
+      <div class="days">${d>0?d:0}<span> 天</span></div>
+      <div class="exam-time">${EXAM.dateText} · 12.19上午管综 / 下午英语二</div>
+      <div class="small" style="opacity:.8;margin-top:8px">当前阶段：强化期（10.1—11.15）→ 冲刺期（11.16起）</div>
+    </div>
+    <div class="card">
+      <h3>今日打卡 <span class="tag">${todayKey()}</span></h3>
+      ${DAILY_TASKS.map((tk,i)=>`
+        <div class="task ${daily.includes(i)?'done':''}" onclick="toggleDaily(${i})">
+          <div class="box">${daily.includes(i)?'✓':''}</div>
+          <div class="ic">${tk.icon}</div>
+          <div class="txt">${tk.text}</div>
+        </div>`).join('')}
+      <div class="progress-bar"><i style="width:${doneCount/dailyTotal*100}%"></i></div>
+      <div class="small muted" style="margin-top:8px">今日完成 ${doneCount}/${dailyTotal} 项 · 连续打卡是上岸最大的底气</div>
+    </div>
+  </div>
+
+  <div class="grid g3" style="margin-top:16px">
+    <div class="card"><h3>累计刷题</h3><div class="stat"><span class="num">${fmt(stats.answered)}</span><span class="muted small">题</span></div><div class="small muted">数学 ${stats.bySubj.math?stats.bySubj.math.a:0} · 逻辑 ${stats.bySubj.logic?stats.bySubj.logic.a:0} · 英语 ${stats.bySubj.english?stats.bySubj.english.a:0}</div></div>
+    <div class="card"><h3>总体正确率</h3><div class="stat"><span class="num">${rate}</span><span class="muted small">%</span></div><div class="small muted">答对 ${fmt(stats.correct)} / ${fmt(stats.answered)}，目标 80%+</div></div>
+    <div class="card"><h3>错题本</h3><div class="stat"><span class="num red">${wrong.length}</span><span class="muted small">题待消灭</span></div><button class="btn ghost sm" style="margin-top:8px" onclick="go('wrong')">进入错题本</button></div>
+  </div>
+
+  <div class="quote">「 ${quote} 」</div>
+
+  ${curWeek ? `
+  <div class="section-title">本周重点（${curWeek.name} · ${curWeek.time}）</div>
+  <div class="card">
+    ${curWeek.tasks.map((t2,i)=>`<div class="wtask" onclick="toggleWeek('${curWeek.id}',${i})"><div class="box">${isWeekDone(curWeek.id,i)?'✓':''}</div><div class="txt">${t2}</div></div>`).join('')}
+  </div>` : ''}
+
+  <div class="section-title">快速开始</div>
+  <div class="grid g3">
+    <div class="card subj-card" onclick="startPractice('math','order')"><div class="ic" style="background:#b4531f">∑</div><b>管综数学 · 顺序练习</b><div class="small muted" style="margin-top:4px">公式+套路，一次练透</div></div>
+    <div class="card subj-card" onclick="startPractice('logic','order')"><div class="ic" style="background:#5a4a8a">◈</div><b>管综逻辑 · 顺序练习</b><div class="small muted" style="margin-top:4px">形式/论证/分析三模块</div></div>
+    <div class="card subj-card" onclick="startPractice('english','order')"><div class="ic" style="background:#1e6e5c">En</div><b>英语二 · 顺序练习</b><div class="small muted" style="margin-top:4px">词汇语法+阅读理解</div></div>
+  </div>`;
+}
+function toggleDaily(i){
+  const key = 'daily_'+todayKey();
+  let daily = store.get(key, []);
+  daily = daily.includes(i) ? daily.filter(x=>x!==i) : [...daily,i];
+  store.set(key, daily);
+  render();
+}
+
+/* ================= 规划 ================= */
+function isWeekDone(wid,i){ const m = store.get('weeks_'+wid, []); return m.includes(i); }
+function toggleWeek(wid,i){
+  let m = store.get('weeks_'+wid, []);
+  m = m.includes(i) ? m.filter(x=>x!==i) : [...m,i];
+  store.set('weeks_'+wid, m);
+  render();
+}
+function renderPlan(){
+  const custom = store.get('custom', []);
+  $('#view').innerHTML = `
+  <div class="section-title">考试信息</div>
+  <div class="grid g2">
+    ${EXAM.subjects.map(s=>`
+    <div class="card">
+      <h3>${s.name} <span class="tag">${s.score}</span></h3>
+      <table class="kv">
+        <tr><td>考试时间</td><td>${s.time}</td></tr>
+        <tr><td>题型构成</td><td>${s.parts}</td></tr>
+        <tr><td>备考要点</td><td>${s.tips}</td></tr>
+      </table>
+    </div>`).join('')}
+  </div>
+  <div class="alert" style="margin-top:16px">${EXAM.notice}</div>
+
+  <div class="section-title">三阶段总规划</div>
+  <div class="card">
+    ${PHASES.map(p=>`
+      <div class="phase ${p.status}" style="margin-bottom:18px">
+        <div class="p-time">${p.time}</div>
+        <h4>${p.name}<span class="pill ${p.status}">${p.status==='done'?'已完成':p.status==='active'?'进行中':'待开始'}</span></h4>
+        <div class="small" style="color:#4a5751">${p.focus}</div>
+      </div>`).join('')}
+  </div>
+
+  <div class="section-title">周计划（10月20日 — 考前）点击任务勾选完成</div>
+  ${WEEKS.map(w=>{
+    const checks = store.get('weeks_'+w.id, []);
+    const doneN = checks.length;
+    const curW = currentWeek();
+    const isNow = curW && curW.id === w.id;
+    return `
+    <div class="week ${isNow?'now':''}" id="wk_${w.id}">
+      <div class="week-head" onclick="document.getElementById('wk_${w.id}').classList.toggle('open')">
+        <b>${w.name} · ${w.time}</b>
+        <span class="muted small">${w.phase}期 · 已完成 ${doneN}/${w.tasks.length}</span>
+      </div>
+      <div class="week-body">
+        ${w.tasks.map((t2,i)=>`<div class="wtask ${isWeekDone(w.id,i)?'done':''}" onclick="toggleWeek('${w.id}',${i})"><div class="box">${isWeekDone(w.id,i)?'✓':''}</div><div class="txt">${t2}</div></div>`).join('')}
+      </div>
+    </div>`;
+  }).join('')}
+
+  <div class="section-title">自定义任务</div>
+  <div class="card">
+    ${custom.length ? custom.map((c,i)=>`
+      <div class="task ${c.done?'done':''}" onclick="toggleCustom(${i})">
+        <div class="box">${c.done?'✓':''}</div><div class="txt">${esc(c.text)}</div>
+        <div class="custom-x" onclick="event.stopPropagation();delCustom(${i})">✕</div>
+      </div>`).join('')
+    : '<div class="muted small">暂无自定义任务，添加你的专属待办：</div>'}
+    <div class="addtask">
+      <input id="cInput" placeholder="例如：把逻辑第3章错题重做一遍" onkeydown="if(event.key==='Enter')addCustom()">
+      <button class="btn" onclick="addCustom()">添加</button>
+    </div>
+  </div>`;
+}
+function addCustom(){
+  const inp = $('#cInput'); const t = inp.value.trim();
+  if(!t) return;
+  const custom = store.get('custom', []);
+  custom.push({text:t, done:false});
+  store.set('custom', custom);
+  render();
+}
+function toggleCustom(i){
+  const custom = store.get('custom', []);
+  custom[i].done = !custom[i].done;
+  store.set('custom', custom);
+  render();
+}
+function delCustom(i){
+  const custom = store.get('custom', []);
+  custom.splice(i,1);
+  store.set('custom', custom);
+  render();
+}
+
+/* ================= 复习资料 ================= */
+function renderNotes(){
+  const n = NOTES[state.notesSubj];
+  $('#view').innerHTML = `
+  <div class="subj-tabs">
+    ${Object.keys(NOTES).map(k=>`<button class="${state.notesSubj===k?'active':''}" onclick="state.notesSubj='${k}';render()">${NOTES[k].icon} ${NOTES[k].name}</button>`).join('')}
+  </div>
+  <div class="card" style="border-left:4px solid var(--green)">
+    <b class="serif" style="font-size:16px">${n.name}</b>
+    <div class="small" style="color:#4a5751;margin-top:6px">${n.intro}</div>
+  </div>
+  <div style="margin-top:14px">
+  ${n.chapters.map((ch,ci)=>`
+    <div class="acc ${ci===0?'open':''}" id="acc_${state.notesSubj}_${ci}">
+      <div class="acc-head" onclick="document.getElementById('acc_${state.notesSubj}_${ci}').classList.toggle('open')">
+        ${ch.title}<span class="arr">›</span>
+      </div>
+      <div class="acc-body">
+        ${ch.cards.map(c=>`
+          <div class="note-card"><h4>◆ ${c.h}</h4><ul>${c.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')}
+      </div>
+    </div>`).join('')}
+  </div>`;
+}
+
+/* ================= 刷题中心 ================= */
+function renderQuiz(){
+  if(state.practice) return renderPractice();
+  const sub = state.quizSubj;
+  const sstats = stats.bySubj[sub] || {a:0,c:0};
+  const total = subjCount(sub);
+  const qs = QUESTIONS.filter(q=>subjOf(q.id)===sub);
+  const wrongIn = wrong.filter(id=>subjOf(id)===sub);
+  $('#view').innerHTML = `
+  <div class="subj-tabs">
+    ${Object.keys(SUBJECTS).filter(k=>k!=='writing').map(k=>`<button class="${sub===k?'active':''}" onclick="state.quizSubj='${k}';render()">${SUBJECTS[k].icon} ${SUBJECTS[k].name}（${subjCount(k)}题）</button>`).join('')}
+  </div>
+  <div class="card">
+    <h3>${SUBJECTS[sub].name} <span class="tag">已答 ${sstats.a} 题 · 正确率 ${sstats.a?Math.round(sstats.c/sstats.a*100):0}% · 待消灭错题 ${wrongIn.length}</span></h3>
+    <div class="small muted">${SUBJECTS[sub].desc}${SUBJECTS[sub].minutes?' · 考场建议约'+SUBJECTS[sub].minutes+'分钟':''}</div>
+    <div class="mode-row">
+      <div class="mode-btn" onclick="startPractice('${sub}','order')"><b>顺序练习</b><span>按题型从头练到尾</span></div>
+      <div class="mode-btn" onclick="startPractice('${sub}','random')"><b>随机练习</b><span>打乱顺序练手感</span></div>
+      <div class="mode-btn" onclick="startPractice('${sub}','daily')"><b>每日 10 题</b><span>随机抽 10 题快练</span></div>
+      <div class="mode-btn" onclick="startPractice('${sub}','wrong')"><b>错题重练</b><span>只练本机错题（${wrongIn.length}）</span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <h3>题型分布</h3>
+    ${(()=>{ const tp = {}; qs.forEach(q=>{ tp[q.topic] = (tp[q.topic]||0)+1; });
+      return Object.keys(tp).map(t=>`<span style="font-size:12px;background:var(--gold-soft);color:var(--gold);border-radius:6px;padding:3px 10px;margin:0 8px 8px 0;display:inline-block">${t} × ${tp[t]}</span>`).join(''); })()}
+    <div class="small muted" style="margin-top:6px">说明：本系统内置 ${QUESTIONS.length} 道精选题，每题附详细解析。刷完错题本清零后，请衔接历年真题套卷训练。</div>
+  </div>`;
+}
+
+function startPractice(sub, mode){
+  state.quizSubj = sub;
+  let ids = QUESTIONS.filter(q=>subjOf(q.id)===sub).map(q=>q.id);
+  if(mode==='random'){ ids = ids.slice().sort(()=>Math.random()-0.5); }
+  if(mode==='daily'){ ids = ids.slice().sort(()=>Math.random()-0.5).slice(0,10); }
+  if(mode==='wrong'){ ids = wrong.filter(id=>subjOf(id)===sub); if(!ids.length){ alert('该科目暂无错题，先去做题吧！'); return; } }
+  state.practice = { ids, idx:0, answers:{}, mode, sub };
+  state.tab = 'quiz';
+  renderNav();
+  render();
+  window.scrollTo(0,0);
+}
+
+function renderPractice(){
+  const p = state.practice;
+  const q = qById(p.ids[p.idx]);
+  const ans = p.answers[p.idx];
+  const psg = passageOf(q);
+  const last = p.idx === p.ids.length-1;
+  const first = p.idx === 0;
+  $('#view').innerHTML = `
+  <div class="qtop">
+    <div>
+      <span class="topic">${SUBJECTS[q.subject].name} · ${q.type}</span>
+      <span class="topic" style="background:var(--gold-soft);color:var(--gold)">${q.topic}</span>
+    </div>
+    <span class="pos">第 ${p.idx+1} / ${p.ids.length} 题　<button class="btn ghost sm" onclick="quitPractice()">退出练习</button></span>
+  </div>
+  <div class="progress-bar" style="margin-bottom:16px"><i style="width:${(p.idx)/p.ids.length*100}%"></i></div>
+  <div class="card">
+    ${psg?`<div class="passage serif">${esc(psg)}</div>`:''}
+    <div class="qtext">${esc(q.q)}</div>
+    ${q.options.map((o,i)=>{
+      let cls = 'opt';
+      if(ans!==undefined){
+        if(i===q.answer) cls+=' right';
+        else if(i===ans) cls+=' wrong';
+      } else if(ans===i) cls+=' selected';
+      return `<div class="${cls}" onclick="chooseOpt(${i})">
+        <div class="letter">${LETTERS[i]}</div>
+        <div class="otext">${esc(o)}</div>
+      </div>`;
+    }).join('')}
+    <div id="verdictBox"></div>
+    <div class="qnav">
+      <button class="btn ghost" ${first?'disabled':''} onclick="prevQ()">← 上一题</button>
+      ${last ? `<button class="btn warn" onclick="finishPractice()">交卷看总结</button>`
+             : `<button class="btn" onclick="nextQ()">下一题 →</button>`}
+    </div>
+    <div class="dots">${p.ids.map((id,i)=>{
+      const a = p.answers[i];
+      const qq = qById(id);
+      let cls='dot'+(i===p.idx?' cur':'');
+      if(a!==undefined) cls += (a===qq.answer?' ok':' no');
+      return `<div class="${cls}" onclick="jumpQ(${i})">${i+1}</div>`;
+    }).join('')}</div>
+  </div>`;
+  if(ans!==undefined) showVerdict(q, ans);
+  window.scrollTo(0,0);
+}
+function showVerdict(q, ans){
+  const ok = ans===q.answer;
+  $('#verdictBox').innerHTML = `
+    <div class="verdict ${ok?'ok':'no'}">${ok?'✓ 回答正确':'✗ 回答错误 · 正确答案 '+LETTERS[q.answer]}</div>
+    <div class="explain"><b>解析：</b>${esc(q.explain)}</div>`;
+}
+function chooseOpt(i){
+  const p = state.practice;
+  const q = qById(p.ids[p.idx]);
+  if(p.answers[p.idx]!==undefined) return; // 已作答，不可改
+  p.answers[p.idx] = i;
+  // 统计
+  stats.answered++;
+  stats.bySubj[q.subject] = stats.bySubj[q.subject] || {a:0,c:0};
+  stats.bySubj[q.subject].a++;
+  if(i===q.answer){ stats.correct++; stats.bySubj[q.subject].c++; wrong = wrong.filter(x=>x!==q.id); }
+  else { if(!wrong.includes(q.id)) wrong.push(q.id); }
+  saveStats();
+  render();
+  window.scrollTo(0,0);
+}
+function nextQ(){ const p=state.practice; if(p.idx<p.ids.length-1){ p.idx++; render(); window.scrollTo(0,0);} }
+function prevQ(){ const p=state.practice; if(p.idx>0){ p.idx--; render(); window.scrollTo(0,0);} }
+function jumpQ(i){ const p=state.practice; p.idx=i; render(); window.scrollTo(0,0); }
+function quitPractice(){ if(confirm('退出本次练习？（已提交的作答已计入统计）')){ state.practice=null; go('quiz'); } }
+function finishPractice(){
+  const p = state.practice;
+  const sub = p.sub || state.quizSubj;
+  const answered = p.ids.filter((id,i)=>p.answers[i]!==undefined).length;
+  const correct = p.ids.filter((id,i)=>p.answers[i]!==undefined && p.answers[i]===qById(id).answer).length;
+  const rate = answered ? Math.round(correct/answered*100) : 0;
+  $('#view').innerHTML = `
+  <div class="card result-hero">
+    <div class="small muted">本次练习 · ${SUBJECTS[sub].name} · ${p.ids.length} 题</div>
+    <div class="big" style="color:${rate>=80?'var(--green)':rate>=60?'var(--gold)':'var(--red)'}">${rate}%</div>
+    <div class="small" style="margin:6px 0 18px">作答 ${answered} / ${p.ids.length} 题 · 正确 ${correct} 题 · 错误 ${answered-correct} 题${p.ids.length-answered>0?` · 跳过 ${p.ids.length-answered} 题`:''}</div>
+    <div class="quote" style="text-align:left">${rate>=80?'状态在线，保持这个正确率，考场上稳了。':rate>=60?'基础尚可，把错题解析逐条消化，正确率还有明显提升空间。':'别慌，正确率是练出来的：先读透本系统「复习资料」对应章节，再来重练错题。'}</div>
+    <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn warn" onclick="startPractice('${sub}','wrong')">重练错题</button>
+      <button class="btn ghost" onclick="state.practice=null;render()">再练一组</button>
+    </div>
+  </div>`;
+  state.practice = null;
+}
+
+/* ================= 错题本 ================= */
+function renderWrong(){
+  if(!wrong.length){
+    $('#view').innerHTML = `<div class="card" style="text-align:center;padding:40px">
+      <div style="font-size:40px;margin-bottom:10px">🎉</div>
+      <b>错题本空空如也，干得漂亮！</b>
+      <div class="muted small" style="margin-top:6px">去刷题中心开始练习，做错的题会自动收进这里。</div>
+      <button class="btn" style="margin-top:16px" onclick="go('quiz')">去刷题</button>
+    </div>`;
+    return;
+  }
+  const groups = {};
+  wrong.forEach(id=>{
+    const q = qById(id); if(!q) return;
+    const s = q.subject;
+    groups[s] = groups[s]||[];
+    groups[s].push(q);
+  });
+  $('#view').innerHTML = `
+  <div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+    <div><b>共 ${wrong.length} 道错题</b><div class="small muted">消灭错题=最快的提分方式。点击每题可展开解析。</div></div>
+    <div style="display:flex;gap:8px">
+      ${Object.keys(groups).map(s=>`<button class="btn warn sm" onclick="startPractice('${s}','wrong')">重练${SUBJECTS[s].name}错题</button>`).join('')}
+    </div>
+  </div>
+  ${Object.keys(groups).map(s=>`
+    <div class="section-title">${SUBJECTS[s].icon} ${SUBJECTS[s].name}（${groups[s].length}题）</div>
+    ${groups[s].map(q=>`
+      <div class="wrong-item">
+        <span class="topic" style="font-size:12px;background:var(--green-soft);color:var(--green);border-radius:6px;padding:2px 8px">${q.type} · ${q.topic}</span>
+        <div class="wq">${esc(q.q)}</div>
+        <div class="wa">正确答案：${LETTERS[q.answer]}</div>
+        <div class="small" style="display:flex;gap:10px;align-items:center">
+          <a href="javascript:void(0)" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">查看解析 ▾</a>
+          <a href="javascript:void(0)" style="color:var(--red)" onclick="removeWrong('${q.id}')">移出错题本</a>
+        </div>
+        <div class="explain" style="display:none;margin-top:10px">${esc(q.explain)}</div>
+      </div>`).join('')}
+  `).join('')}`;
+}
+function removeWrong(id){
+  wrong = wrong.filter(x=>x!==id);
+  saveStats();
+  renderNav();
+  render();
+}
+
+/* ================= 路由渲染 ================= */
+function render(){
+  if(state.tab==='home') renderHome();
+  else if(state.tab==='plan') renderPlan();
+  else if(state.tab==='notes') renderNotes();
+  else if(state.tab==='quiz') renderQuiz();
+  else if(state.tab==='wrong') renderWrong();
+}
+renderNav();
+render();
+</script>
+</body>
+</html>
